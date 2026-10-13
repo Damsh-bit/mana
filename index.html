@@ -18,6 +18,8 @@
 <script src="/assets/js/ScrollTrigger.min.js" defer></script>
 <script src="/assets/js/motion.min.js" defer></script>
 <script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/hablemos.js" defer></script>
+<script src="/assets/js/micro.js" defer></script>
 <script type="module" src="/assets/js/rubros.js"></script>
 <link rel="preconnect" href="https://radar-panel-sandy.vercel.app" crossorigin>
 </head>
@@ -43,7 +45,7 @@
 <section class="wrap" style="padding-top: clamp(40px, 7vw, 112px); padding-bottom: clamp(56px, 7vw, 104px)">
 <div data-g="fade" class="mono" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">
 <span>Estudio de desarrollo web</span>
-<span style="display: inline-flex; align-items: center; gap: 10px"><span style="position: relative; display: inline-block; width: 8px; height: 8px"><span data-m="pulse" style="position: absolute; inset: 0; border-radius: 50%; background: var(--mana)"></span><span style="position: absolute; inset: 0; border-radius: 50%; background: var(--mana)"></span></span>Tomando proyectos nuevos</span>
+<span class="tip" data-tip="Respondemos en menos de 24 h hábiles" tabindex="0" style="display: inline-flex; align-items: center; gap: 10px"><span style="position: relative; display: inline-block; width: 8px; height: 8px"><span data-m="pulse" style="position: absolute; inset: 0; border-radius: 50%; background: var(--mana)"></span><span style="position: absolute; inset: 0; border-radius: 50%; background: var(--mana)"></span></span>Tomando proyectos nuevos</span>
 </div>
 <h1 class="d" style="margin: clamp(28px, 4vw, 56px) 0 0; font-size: clamp(46px, 14.6vw, 192px); line-height: 0.9; letter-spacing: -0.045em; font-weight: 500; color: #0D1117">
 <span style="display: block"><span class="mask"><span data-g="word" style="display: inline-block">Webs</span></span> <span class="mask"><span data-g="word" style="display: inline-block">nuevas.</span></span></span>
@@ -522,6 +524,7 @@
 <div style="display: flex; flex-direction: column; gap: 12px">
 <h3 class="d" style="margin: 0; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.035em">Desde cero</h3>
 <p style="margin: 0; max-width: 520px; font-size: 17px; line-height: 1.6; color: #3D4550; text-wrap: pretty">Diseñamos y desarrollamos tu web completa, a medida de tu empresa y no de una plantilla: estructura, contenido, diseño y código.</p>
+<a class="svc-cta" href="#contacto" data-hablemos="cero">Quiero una desde cero<span aria-hidden="true">→</span></a>
 </div>
 </div>
 <div class="svc" style="display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 8px 16px; padding: 32px 16px; border-bottom: 1px solid #E3E7EC">
@@ -529,6 +532,7 @@
 <div style="display: flex; flex-direction: column; gap: 12px">
 <h3 class="d" style="margin: 0; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.035em">Mejorar la que ya tenés</h3>
 <p style="margin: 0; max-width: 520px; font-size: 17px; line-height: 1.6; color: #3D4550; text-wrap: pretty">Tomamos tu sitio actual y lo hacemos más rápido, más claro y más fácil de usar. Sin empezar de nuevo si no hace falta.</p>
+<a class="svc-cta" href="#contacto" data-hablemos="rediseno">Quiero mejorar la mía<span aria-hidden="true">→</span></a>
 </div>
 </div>
 </div>
@@ -575,16 +579,19 @@
 
 <section id="contacto" style="padding-bottom: clamp(24px, 3vw, 40px)">
 <div class="wrap">
-<div data-m="reveal" style="position: relative; overflow: hidden; display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px); padding: clamp(40px, 7vw, 112px) clamp(24px, 6vw, 96px); border-radius: clamp(24px, 3vw, 40px); background: var(--mana); color: #0D1117">
-<span aria-hidden="true" style="position: absolute; right: -12%; top: -38%; width: 56%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1px solid rgba(13, 17, 23, 0.12)"></span>
-<span aria-hidden="true" style="position: absolute; right: -4%; top: -22%; width: 40%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1px solid rgba(13, 17, 23, 0.1)"></span>
+<div data-m="reveal" data-x="contact" style="position: relative; overflow: hidden; display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px); padding: clamp(40px, 7vw, 112px) clamp(24px, 6vw, 96px); border-radius: clamp(24px, 3vw, 40px); background: var(--mana); color: #0D1117">
+<span aria-hidden="true" data-x="ring" style="position: absolute; right: -12%; top: -38%; width: 56%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1px solid rgba(13, 17, 23, 0.12)"></span>
+<span aria-hidden="true" data-x="ring" style="position: absolute; right: -4%; top: -22%; width: 40%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1px solid rgba(13, 17, 23, 0.1)"></span>
 <p class="mono" style="position: relative; margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #0D1117">(05) Contacto</p>
 <h2 class="d" style="position: relative; margin: 0; font-weight: 500; line-height: 0.9; letter-spacing: -0.06em">
 <span style="display: block; margin-bottom: 0.35em; font-size: clamp(26px, 3.2vw, 48px); letter-spacing: -0.04em">¿Tenés un proyecto en mente?</span>
-<span style="display: block; font-size: clamp(68px, 14.5vw, 224px)">Hablemos.</span>
+<span data-x="letters" style="display: block; font-size: clamp(68px, 14.5vw, 224px)">Hablemos.</span>
 </h2>
 <div style="position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px">
 <a href="#contacto" class="btn" data-m="magnet" style="display: inline-flex; align-items: center; gap: 14px; height: 58px; padding: 0 8px 0 28px; border-radius: 999px; background: #0D1117; color: #FFFFFF; font-size: 16px; font-weight: 500">Escribinos<span class="bi" style="width: 42px; height: 42px; border-radius: 50%; background: var(--mana); color: #0D1117; display: grid; place-items: center"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+<span class="mono contact-hint">5 pasos · 2 minutos</span>
+</span>
 <div class="mono" style="display: flex; flex-wrap: wrap; gap: 12px 32px; font-size: 14px; color: #0D1117">
 <span>[email de contacto]</span>
 <span>[WhatsApp]</span>

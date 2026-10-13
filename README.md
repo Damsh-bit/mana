@@ -7,6 +7,8 @@ Landing del estudio de desarrollo web Maná. Sitio estático (HTML + CSS + JS), 
 - `rubros/rubro.html` — un rubro (`/rubros/<rubro>`, por la regla de `vercel.json`)
 - `assets/css/styles.css` — estilos
 - `assets/js/main.js` — animaciones (GSAP + Motion) y carrusel de proyectos
+- `assets/js/hablemos.js` — el formulario de contacto "Hablemos" (abajo)
+- `assets/js/micro.js` — microinteracciones (abajo)
 - `assets/js/catalogo.js`, `rubros.js`, `rubro.js`, `vitrina.js`, `mockup.js` — los rubros (abajo)
 
 ## Rubros: los diseños de Radar, solos
@@ -40,6 +42,33 @@ una plantilla nueva aparece al minuto, en su rubro, y un rubro aparece apenas ti
 
 Las claves de rubro son las de Radar (`lib/config.js`): `arquitectura`, `construccion`, `salud`, etc. Un link con
 `para` no se indexa.
+
+## Hablemos: el formulario de contacto
+
+Todo lo que lleva a `#contacto` (el botón "Hablemos" de arriba, "Contanos tu proyecto", "Escribinos", "Quiero esta" en el
+visor de diseños) abre un popup de cinco pasos en vez de bajar a la sección: **proyecto** (qué tipo de web), **negocio**
+(empresa, rubro, dónde está y su web), **objetivos** (lo principal y qué funciones quiere), **alcance** (presupuesto
+orientativo en USD, para cuándo y qué contenido ya tiene) y **contacto** (nombre, por dónde prefiere que le escriban,
+WhatsApp o teléfono, email y un mensaje). Después, un resumen para revisar y editar, y el envío.
+
+- Cada consulta llega a [Radar Panel](https://github.com/Damsh-bit/radar-panel) como un **referido de Maná**
+  (`POST /api/referidos`, ver "Referidos de Maná" en su README): aparece en la pestaña "Referidos de Maná" de Seguimiento y
+  como próximo paso en Hoy. Las opciones del formulario usan las claves de `lib/referidos.js` de Radar: si se suma una
+  opción acá, va también allá.
+- Toma el contexto de la página: en `/rubros/<rubro>` el rubro ya viene elegido, el diseño que se estaba mirando (`ver`) y
+  el link para un cliente (`para` y `pais`) completan la empresa y el país, y viajan con la consulta.
+- `data-hablemos="<proyecto>"` en un link abre el formulario con ese tipo de proyecto elegido (los de Servicios lo usan), y
+  `/#hablemos` lo abre al cargar.
+- Lo respondido se guarda en el navegador hasta enviarlo: cerrar no pierde nada y al volver sigue donde quedó.
+- Contra robots: un campo trampa y un tiempo mínimo; Radar además limita los envíos por conexión.
+
+## Microinteracciones
+
+`micro.js` y el final de `styles.css`: el menú hace rodar sus letras, los botones brillan al pasar y sueltan chispas al
+tocarlos, las etiquetas de sección se decodifican al aparecer, las tarjetas de proyectos se inclinan hacia el mouse con un
+reflejo, los retratos tienen profundidad, "Hablemos." se agranda letra por letra bajo el puntero, el cursor saluda sobre lo
+que abre el formulario, el encabezado se achica al bajar y el logo del pie se sacude. Con "reducir movimiento" no corre
+nada, y lo que sigue al mouse solo corre con mouse.
 
 ## Local
 
