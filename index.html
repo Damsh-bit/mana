@@ -18,6 +18,8 @@
 <script src="/assets/js/ScrollTrigger.min.js" defer></script>
 <script src="/assets/js/motion.min.js" defer></script>
 <script src="/assets/js/main.js" defer></script>
+<script type="module" src="/assets/js/rubros.js"></script>
+<link rel="preconnect" href="https://radar-panel-sandy.vercel.app" crossorigin>
 </head>
 <body>
 <div id="top" class="mana" data-mana-root="" style="--mana: #56B3F2; position: relative; background: #FAFBFC; color: #0D1117; font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; overflow-x: clip">
@@ -27,6 +29,7 @@
 <a href="#top" aria-label="Maná, volver al inicio" data-g="nav" class="d" style="display: inline-block; font-size: 30px; font-weight: 600; letter-spacing: -0.055em; line-height: 1">man<span class="acc-a">a<span class="acc" data-g="acc" aria-hidden="true"></span></span></a>
 <nav aria-label="Principal" class="nav-links" data-g="nav" style="font-size: 15px; font-weight: 500">
 <a class="ulink" href="#proyectos">Proyectos</a>
+<a class="ulink" href="#rubros">Rubros</a>
 <a class="ulink" href="#servicios">Servicios</a>
 <a class="ulink" href="#estudio">Estudio</a>
 </nav>
@@ -481,10 +484,36 @@
 </div>
 </section>
 
+<section id="rubros" data-rubros="home" style="border-top: 1px solid #E3E7EC; padding-top: clamp(80px, 9vw, 144px); padding-bottom: clamp(80px, 9vw, 144px)">
+<div class="wrap">
+<div class="rb-head">
+<div data-m="reveal" style="display: flex; flex-direction: column; gap: 20px">
+<p class="mono lbl">(02) Rubros</p>
+<h2 class="d" style="margin: 0; font-size: clamp(52px, 9vw, 140px); line-height: 0.88; letter-spacing: -0.06em; font-weight: 500">Una web<br>para cada rubro.<sup class="mono" data-rubros-count style="font-size: 0.16em; letter-spacing: 0; font-weight: 400; vertical-align: top; margin-left: 0.2em; position: relative; top: 0.5em">00</sup></h2>
+</div>
+<p data-m="reveal" style="margin: 0; max-width: 400px; font-size: 17px; line-height: 1.6; color: #3D4550; text-wrap: pretty">Diseños pensados para lo que necesita cada tipo de negocio: turnos, cotizadores, catálogos y consultas por WhatsApp. Elegí tu rubro y recorrelos como si ya fueran tu web.</p>
+</div>
+<div class="chips" data-rubros-chips hidden style="margin-bottom: 28px" aria-label="Filtrar por categoría"></div>
+<ol class="rb-list" data-rubros-list>
+<li class="rb-skel" aria-hidden="true"></li>
+<li class="rb-skel" aria-hidden="true"></li>
+<li class="rb-skel" aria-hidden="true"></li>
+</ol>
+<noscript><p style="margin: 24px 0 0; color: #3D4550">Activá JavaScript para ver los diseños por rubro.</p></noscript>
+<div class="rb-foot" data-m="reveal">
+<span>¿No ves tu rubro? También hacemos webs desde cero.</span>
+<span style="display: flex; flex-wrap: wrap; gap: 12px 28px">
+<a class="ulink rb-more" href="/rubros/" data-rubros-more hidden><span data-rubros-more-label>Ver todos los rubros</span> →</a>
+<a class="ulink" href="#contacto">Contanos de tu negocio →</a>
+</span>
+</div>
+</div>
+</section>
+
 <section id="servicios" style="border-top: 1px solid #E3E7EC">
 <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 48px clamp(40px, 6vw, 96px); padding-top: clamp(80px, 9vw, 144px); padding-bottom: clamp(80px, 9vw, 144px)">
 <div data-m="reveal" style="display: flex; flex-direction: column; gap: 24px">
-<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">(02) Servicios</p>
+<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">(03) Servicios</p>
 <h2 class="d" style="margin: 0; font-size: clamp(42px, 5.4vw, 84px); line-height: 0.94; letter-spacing: -0.055em; font-weight: 500; text-wrap: balance">Dos formas de empezar.</h2>
 </div>
 <div data-m="stagger" style="display: flex; flex-direction: column; border-top: 1px solid #E3E7EC">
@@ -509,7 +538,7 @@
 <section id="estudio" style="border-top: 1px solid #E3E7EC">
 <div class="wrap" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 56px clamp(40px, 6vw, 96px); padding-top: clamp(80px, 9vw, 144px); padding-bottom: clamp(80px, 9vw, 144px)">
 <div data-m="reveal" style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 24px; max-width: 560px">
-<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">(03) Estudio</p>
+<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">(04) Estudio</p>
 <h2 class="d" style="margin: 0; font-size: clamp(42px, 5.4vw, 84px); line-height: 0.94; letter-spacing: -0.055em; font-weight: 500; text-wrap: balance">Un estudio de dos.</h2>
 <p style="margin: 0; max-width: 460px; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; color: #3D4550; text-wrap: pretty">Maná somos Santiago y Damián. Pensamos, diseñamos y programamos cada proyecto nosotros mismos, de principio a fin: hablás directo con quienes hacen tu web.</p>
 </div>
@@ -549,7 +578,7 @@
 <div data-m="reveal" style="position: relative; overflow: hidden; display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px); padding: clamp(40px, 7vw, 112px) clamp(24px, 6vw, 96px); border-radius: clamp(24px, 3vw, 40px); background: var(--mana); color: #0D1117">
 <span aria-hidden="true" style="position: absolute; right: -12%; top: -38%; width: 56%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1px solid rgba(13, 17, 23, 0.12)"></span>
 <span aria-hidden="true" style="position: absolute; right: -4%; top: -22%; width: 40%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1px solid rgba(13, 17, 23, 0.1)"></span>
-<p class="mono" style="position: relative; margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #0D1117">(04) Contacto</p>
+<p class="mono" style="position: relative; margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #0D1117">(05) Contacto</p>
 <h2 class="d" style="position: relative; margin: 0; font-weight: 500; line-height: 0.9; letter-spacing: -0.06em">
 <span style="display: block; margin-bottom: 0.35em; font-size: clamp(26px, 3.2vw, 48px); letter-spacing: -0.04em">¿Tenés un proyecto en mente?</span>
 <span style="display: block; font-size: clamp(68px, 14.5vw, 224px)">Hablemos.</span>

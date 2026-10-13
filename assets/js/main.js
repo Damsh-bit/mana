@@ -8,6 +8,20 @@
   const all = (sel, scope) => Array.from((scope || root).querySelectorAll(sel));
   const reducedMotion = mq('(prefers-reduced-motion: reduce)');
 
+  // Hooks for content rendered after load (the rubros catalog). No-ops until motion is set up, and without motion.
+  const api = { reducedMotion, reveal: () => {}, refresh: () => {} };
+  window.Mana = api;
+
+  // Hover in/out by delegation, so cards added later behave like the ones in the markup.
+  const hoverable = (selector, enter, leave) => {
+    const handle = (fn) => (e) => {
+      const el = e.target.closest && e.target.closest(selector);
+      if (el && root.contains(el) && !el.contains(e.relatedTarget)) fn(el);
+    };
+    root.addEventListener('mouseover', handle(enter));
+    root.addEventListener('mouseout', handle(leave));
+  };
+
   // ---------- Projects carousel ----------
   // Without motion (reduced motion / no JS) the reel stays a native, snap-scrolling
   // strip. With motion it becomes an endless auto-playing loop you can drag.
@@ -220,6 +234,7 @@
       if (ST && document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => ST.refresh());
       }
+      if (ST) api.refresh = () => ST.refresh();
     }
 
     // The carousel clones its cards, so it must exist before hover handlers are bound.
@@ -249,6 +264,7 @@
       all('[data-m="stagger"]').forEach((group) => {
         Array.from(group.children).forEach((child, i) => reveal(child, i * 0.1));
       });
+      api.reveal = reveal;
 
       const foot = root.querySelector('[data-g="foot"]');
       if (foot && footTl) whenVisible(foot, () => footTl.play(), 0.3);
@@ -269,21 +285,18 @@
       const bar = root.querySelector('[data-m="progress"]');
       if (bar && scroll) scroll(animate(bar, { scaleX: [0, 1] }, { ease: 'linear' }));
 
-      all('[data-m="card"]').forEach((card) => {
-        const media = card.querySelector('[data-m="media"]');
-        const arrow = card.querySelector('[data-m="arrow"]');
-        const title = card.querySelector('[data-m="title"]');
-        const lens = { type: 'spring', stiffness: 150, damping: 22 };
-        card.addEventListener('mouseenter', () => {
-          if (media) animate(media, { scale: 1.035 }, lens);
-          if (arrow) animate(arrow, { rotate: 45 }, soft);
-          if (title) animate(title, { x: 10 }, soft);
-        });
-        card.addEventListener('mouseleave', () => {
-          if (media) animate(media, { scale: 1 }, lens);
-          if (arrow) animate(arrow, { rotate: 0 }, soft);
-          if (title) animate(title, { x: 0 }, soft);
-        });
+      const lens = { type: 'spring', stiffness: 150, damping: 22 };
+      const cardParts = (card) => ['media', 'arrow', 'title'].map((k) => card.querySelector(`[data-m="${k}"]`));
+      hoverable('[data-m="card"]', (card) => {
+        const [media, arrow, title] = cardParts(card);
+        if (media) animate(media, { scale: 1.035 }, lens);
+        if (arrow) animate(arrow, { rotate: 45 }, soft);
+        if (title) animate(title, { x: 10 }, soft);
+      }, (card) => {
+        const [media, arrow, title] = cardParts(card);
+        if (media) animate(media, { scale: 1 }, lens);
+        if (arrow) animate(arrow, { rotate: 0 }, soft);
+        if (title) animate(title, { x: 0 }, soft);
       });
 
       if (desktop) {
@@ -321,19 +334,22 @@
             animate(cursor, { x: e.clientX, y: e.clientY }, { type: 'spring', stiffness: 650, damping: 44, mass: 0.5 });
           });
           document.documentElement.addEventListener('mouseleave', () => { visible = false; animate(cursor, { opacity: 0 }, { duration: 0.25 }); });
-          all('[data-m="card"]').forEach((card) => {
-            card.addEventListener('mouseenter', () => {
-              animate(blob, { scale: 1 }, { type: 'spring', stiffness: 300, damping: 24 });
-              if (label) animate(label, { opacity: 1 }, { duration: 0.2, delay: 0.08 });
-            });
-            card.addEventListener('mouseleave', () => {
-              animate(blob, { scale: 0.16 }, { type: 'spring', stiffness: 300, damping: 26 });
-              if (label) animate(label, { opacity: 0 }, { duration: 0.15 });
-            });
+          hoverable('[data-m="card"]', (card) => {
+            if (label) label.textContent = card.getAttribute('data-cursor') || 'Ver';
+            animate(blob, { scale: 1 }, { type: 'spring', stiffness: 300, damping: 24 });
+            if (label) animate(label, { opacity: 1 }, { duration: 0.2, delay: 0.08 });
+          }, () => {
+            animate(blob, { scale: 0.16 }, { type: 'spring', stiffness: 300, damping: 26 });
+            if (label) animate(label, { opacity: 0 }, { duration: 0.15 });
           });
-          all('a:not([data-m="card"]), button').forEach((el) => {
-            el.addEventListener('mouseenter', () => animate(blob, { scale: 0.4 }, soft));
-            el.addEventListener('mouseleave', () => animate(blob, { scale: 0.16 }, soft));
+          hoverable('a:not([data-m="card"]), button', (el) => {
+            if (!el.closest('[data-m="card"]')) animate(blob, { scale: 0.4 }, soft);
+          }, (el) => {
+            if (!el.closest('[data-m="card"]')) animate(blob, { scale: 0.16 }, soft);
+          });
+          // Inside a live preview the page can't follow the pointer: hide the cursor until it comes back out.
+          hoverable('iframe', () => animate(cursor, { opacity: 0 }, { duration: 0.2 }), () => {
+            if (visible) animate(cursor, { opacity: 1 }, { duration: 0.2 });
           });
         }
       }

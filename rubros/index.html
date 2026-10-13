@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Una web para cada rubro — Maná</title>
+<meta name="description" content="Diseños de web pensados para cada tipo de negocio: elegí tu rubro y recorrelos como si ya fueran tu web.">
+<meta name="theme-color" content="#FAFBFC">
+<meta property="og:title" content="Una web para cada rubro — Maná">
+<meta property="og:description" content="Diseños pensados para cada tipo de negocio. Elegí tu rubro y recorrelos como si ya fueran tu web.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://radar-panel-sandy.vercel.app" crossorigin>
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script src="/assets/js/gsap.min.js" defer></script>
+<script src="/assets/js/ScrollTrigger.min.js" defer></script>
+<script src="/assets/js/motion.min.js" defer></script>
+<script src="/assets/js/main.js" defer></script>
+<script type="module" src="/assets/js/rubros.js"></script>
+</head>
+<body>
+<div id="top" class="mana" data-mana-root="" style="--mana: #56B3F2; position: relative; background: #FAFBFC; color: #0D1117; font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; overflow-x: clip">
+
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(250, 251, 252, 0.84); backdrop-filter: saturate(1.6) blur(16px); -webkit-backdrop-filter: saturate(1.6) blur(16px)">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px">
+<a href="/" aria-label="Maná, ir al inicio" data-g="nav" class="d" style="display: inline-block; font-size: 30px; font-weight: 600; letter-spacing: -0.055em; line-height: 1">man<span class="acc-a">a<span class="acc" data-g="acc" aria-hidden="true"></span></span></a>
+<nav aria-label="Principal" class="nav-links" data-g="nav" style="font-size: 15px; font-weight: 500">
+<a class="ulink" href="/#proyectos">Proyectos</a>
+<a class="ulink" href="/rubros/" aria-current="page">Rubros</a>
+<a class="ulink" href="/#servicios">Servicios</a>
+<a class="ulink" href="/#estudio">Estudio</a>
+</nav>
+<a href="/#contacto" class="btn" data-g="nav" style="display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 7px 0 20px; border-radius: 999px; background: var(--mana); color: #0D1117; font-size: 15px; font-weight: 500">Hablemos<span class="bi" style="width: 32px; height: 32px; border-radius: 50%; background: #0D1117; color: #FFFFFF; display: grid; place-items: center"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+<div class="progress" data-m="progress" style="position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--mana)"></div>
+</header>
+
+<main>
+
+<section class="wrap rh" data-rubros="index" style="padding-bottom: clamp(96px, 11vw, 176px)">
+<div class="rh-top mono" data-g="fade">
+<p class="crumbs"><a href="/">Maná</a><span aria-hidden="true">/</span><span>Rubros</span></p>
+<span data-rubros-total></span>
+</div>
+<h1 class="d rh-title">
+<span class="rh-line"><span class="mask"><span data-g="word" style="display: inline-block">Una</span></span> <span class="mask"><span data-g="word" style="display: inline-block">web</span></span></span>
+<span class="rh-line"><span class="mask"><span data-g="word" style="display: inline-block">para</span></span> <span class="mask"><span data-g="word" style="display: inline-block">cada</span></span> <span class="mask"><span data-g="word" style="display: inline-block">rubro.<sup class="mono" data-rubros-count style="font-size: 0.14em; letter-spacing: 0; font-weight: 400; vertical-align: top; margin-left: 0.2em; position: relative; top: 0.5em">00</sup></span></span></span>
+</h1>
+<div class="rh-foot">
+<p class="rh-lead" data-g="fade">Diseños pensados para lo que necesita cada tipo de negocio: turnos, cotizadores, catálogos y consultas por WhatsApp. Elegí tu rubro y recorrelos como si ya fueran tu web.</p>
+<div class="rh-ctas" data-g="fade">
+<a href="/#contacto" class="btn" data-m="magnet" style="display: inline-flex; align-items: center; gap: 14px; height: 58px; padding: 0 8px 0 28px; border-radius: 999px; background: var(--mana); color: #0D1117; font-size: 16px; font-weight: 500">¿No está el tuyo? Hablemos<span class="bi" style="width: 42px; height: 42px; border-radius: 50%; background: #0D1117; color: #FFFFFF; display: grid; place-items: center"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+</div>
+<div data-rubros-groups style="margin-top: clamp(64px, 7vw, 112px)">
+<ol class="rb-list">
+<li class="rb-skel" aria-hidden="true"></li>
+<li class="rb-skel" aria-hidden="true"></li>
+<li class="rb-skel" aria-hidden="true"></li>
+</ol>
+</div>
+<noscript><p style="margin: 24px 0 0; color: #3D4550">Activá JavaScript para ver los diseños por rubro.</p></noscript>
+</section>
+
+</main>
+
+<footer style="padding-top: clamp(40px, 5vw, 80px)">
+<div class="wrap">
+<div data-g="foot" aria-hidden="true" class="d" style="display: flex; justify-content: center; font-size: clamp(120px, 36vw, 560px); font-weight: 600; line-height: 0.78; letter-spacing: -0.05em; color: #0D1117">
+<span class="mask"><span data-g="fl" style="display: inline-block">m</span></span>
+<span class="mask"><span data-g="fl" style="display: inline-block">a</span></span>
+<span class="mask"><span data-g="fl" style="display: inline-block">n</span></span>
+<span class="mask"><span data-g="fl" class="acc-a">a<span class="acc" data-g="facc"></span></span></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; margin-top: clamp(20px, 2.4vw, 36px); padding: 28px 0 36px; border-top: 1px solid #E3E7EC; font-size: 14px; color: #5A6472">
+<span>© 2026 Maná — Estudio de desarrollo web</span>
+<span>Santiago &amp; Damián</span>
+<a href="#top" class="ulink" style="display: inline-flex; align-items: center; gap: 8px; color: #0D1117">Volver arriba<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+</div>
+</div>
+</footer>
+
+<div class="cursor" data-m="cursor" aria-hidden="true"><div class="blob" data-m="blob"><span class="mono cursor-label" data-m="cursor-label" style="font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #0D1117">Ver</span></div></div>
+
+</div>
+</body>
+</html>
