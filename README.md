@@ -16,7 +16,12 @@ activas ("Usarla en las demos") en [Radar Panel](https://github.com/Damsh-bit/ra
 una plantilla nueva aparece al minuto, en su rubro, y un rubro aparece apenas tiene una. Radar las publica en
 `GET https://radar-panel-sandy.vercel.app/api/plantillas` (ver "Vitrina en Maná" en su README).
 
-- La home y `/rubros/` muestran cada rubro con miniaturas dibujadas en los colores de sus diseños.
+- La home y `/rubros/` listan los rubros. En computadora, al pasar el mouse sale un abanico con tres de sus diseños
+  reales: el del frente se mueve y se recorre solo, los de los costados quedan quietos. En el celular, miniaturas
+  dibujadas en los colores de cada diseño.
+- Cada vista previa es el sitio entero, así que se cargan de a dos, corren su entrada y se congelan (sin cuadros ni
+  animaciones) hasta que se les pasa el mouse; las chicas van a 30 cuadros por segundo y con el 3D a 1x. Con el visor
+  abierto, todo lo de atrás queda congelado y sin dibujarse (`bridge` y `createPreview` en `vitrina.js`).
 - `/rubros/<rubro>` muestra cada diseño **en vivo** (la página real, achicada) y lo abre a pantalla completa, en
   computadora o en celular. Se adapta con el mismo `adaptarPlantilla` de las demos de Radar, con un negocio de ejemplo.
   Los botones de WhatsApp, llamar y email no llaman a nadie: avisan qué harían en la web del cliente (y muestran el

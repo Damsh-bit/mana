@@ -1,6 +1,10 @@
 // Live previews of Radar templates: the same adaptarPlantilla that builds each prospect's demo, filled with sample data
 // (or the client's name, country and brand color from the link), inside a sandboxed iframe with no origin.
 // Contact buttons don't dial a fake number: the page explains what they would do on the client's real site.
+//
+// Performance: each preview is a whole site (GSAP, Three.js, its own loops), so they load one or two at a time, play
+// their intro and then freeze (no frames, no animations) until they're hovered. Small previews also run at half frame
+// rate and render 3D at 1x. While the viewer is open, everything behind it is frozen and not painted.
 import { RADAR, escapeHtml } from './catalogo.js';
 
 const Mana = window.Mana || { reducedMotion: false };
@@ -47,10 +51,13 @@ function demoData(template, rubro, who) {
   return d;
 }
 
-// Runs inside the preview (stringified). Contact links report to the page instead of opening; thumbnails can "tour"
-// (scroll down by themselves) while hovered.
-function bridge(thumb) {
+// Runs inside the preview (stringified), before the template's own scripts.
+// o.thumb: a small preview that can "tour" (scroll down by itself); o.every: draw one frame out of every n;
+// o.dpr: devicePixelRatio the template sees (canvas and 3D size).
+function bridge(o) {
   var post = function (m) { m.mana = 1; try { parent.postMessage(m, '*'); } catch (e) { /* detached */ } };
+
+  // Contact links report to the page instead of opening.
   var kind = function (h) {
     if (/^(?:https?:)?\/\/(?:wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\b|^whatsapp:/i.test(h)) return 'whatsapp';
     if (/^tel:/i.test(h)) return 'tel';
@@ -75,28 +82,95 @@ function bridge(thumb) {
   });
   var open = window.open;
   window.open = function (u) { return intercept(u) ? null : open.apply(window, arguments); };
+
+  if (o.dpr) {
+    try { Object.defineProperty(window, 'devicePixelRatio', { get: function () { return o.dpr; }, configurable: true }); } catch (e) { /* read-only */ }
+  }
+
+  // Every animation loop (GSAP, Motion, Three.js, the template's own) goes through requestAnimationFrame: routing it
+  // here lets the page freeze the preview or lower its frame rate.
+  var nativeRAF = window.requestAnimationFrame.bind(window);
+  var nativeCAF = window.cancelAnimationFrame.bind(window);
+  var callbacks = new Map();
+  var seq = 0;
+  var scheduled = false;
+  var frozen = false;
+  var tick = 0;
+  var every = o.every || 1;
+  var schedule = function () {
+    if (scheduled || frozen || !callbacks.size) return;
+    scheduled = true;
+    nativeRAF(flush);
+  };
+  var flush = function (t) {
+    scheduled = false;
+    if (frozen) return;
+    tick += 1;
+    if (every > 1 && tick % every) { schedule(); return; }
+    var due = callbacks;
+    callbacks = new Map();
+    due.forEach(function (cb) { try { cb(t); } catch (e) { setTimeout(function () { throw e; }); } });
+  };
+  window.requestAnimationFrame = function (cb) { seq += 1; callbacks.set(seq, cb); schedule(); return seq; };
+  window.cancelAnimationFrame = function (id) { callbacks.delete(id); };
+
+  var held = [];
+  var freeze = function () {
+    if (frozen) return;
+    frozen = true;
+    try {
+      held = document.getAnimations().filter(function (a) { return a.playState === 'running'; });
+      held.forEach(function (a) { a.pause(); });
+    } catch (e) { held = []; }
+    Array.prototype.forEach.call(document.querySelectorAll('video'), function (v) {
+      if (!v.paused) { v.pause(); v.setAttribute('data-mana-paused', ''); }
+    });
+  };
+  var play = function () {
+    if (!frozen) return;
+    frozen = false;
+    held.forEach(function (a) { try { a.play(); } catch (e) { /* gone */ } });
+    held = [];
+    Array.prototype.forEach.call(document.querySelectorAll('video[data-mana-paused]'), function (v) {
+      v.removeAttribute('data-mana-paused');
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+    schedule();
+  };
+
   var ready = function () { setTimeout(function () { post({ type: 'ready' }); }, 150); };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready); else ready();
-  if (!thumb) return;
-  var css = document.createElement('style');
-  css.textContent = 'html{scroll-behavior:auto!important;scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none}';
-  document.documentElement.appendChild(css);
-  var raf = 0;
+
+  var tourId = 0;
   var last = 0;
   var step = function (t) {
+    if (frozen) return;
     var dt = last ? Math.min(64, t - last) : 16;
     last = t;
     var max = Math.min(document.documentElement.scrollHeight - innerHeight, innerHeight * 4);
     var y = Math.min(max, (window.scrollY || 0) + dt * innerHeight * 0.00042);
     window.scrollTo(0, y);
-    if (y < max) raf = requestAnimationFrame(step);
+    if (y < max) tourId = nativeRAF(step);
   };
+  if (o.thumb) {
+    var css = document.createElement('style');
+    css.textContent = 'html{scroll-behavior:auto!important;scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none}';
+    document.documentElement.appendChild(css);
+  }
+
   window.addEventListener('message', function (e) {
-    if (e.source !== parent || !e.data || !e.data.mana || e.data.type !== 'tour') return;
-    cancelAnimationFrame(raf);
-    last = 0;
-    if (e.data.on) raf = requestAnimationFrame(step);
-    else window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (e.source !== parent || !e.data || !e.data.mana) return;
+    var d = e.data;
+    if (d.type === 'freeze') freeze();
+    else if (d.type === 'play') play();
+    else if (d.type === 'tour' && o.thumb) {
+      nativeCAF(tourId);
+      last = 0;
+      if (d.on) tourId = nativeRAF(step);
+      else if (d.instant) window.scrollTo(0, 0);
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   });
 }
 
@@ -116,11 +190,23 @@ function loadPage(id) {
   return pages.get(id);
 }
 
-async function buildPage(template, rubro, who, thumb) {
-  const [{ adaptarPlantilla }, page] = await Promise.all([loadAdapter(), loadPage(template.id)]);
-  const html = adaptarPlantilla(page.html, demoData(template, rubro, who), page.ejemplo || {});
-  const script = `<script>(${bridge.toString()})(${thumb ? 'true' : 'false'});</script>`;
-  return /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, (m) => m + script) : script + html;
+// Fetch ahead (network only), so a hover doesn't wait for the download.
+export function prefetch(templates) {
+  loadAdapter().catch(() => {});
+  templates.forEach((t) => loadPage(t.id).catch(() => {}));
+}
+
+const built = new Map();
+function buildPage(template, rubro, who, opts) {
+  const key = `${template.id}|${rubro.clave}|${JSON.stringify(opts)}`;
+  if (!built.has(key)) {
+    built.set(key, Promise.all([loadAdapter(), loadPage(template.id)]).then(([{ adaptarPlantilla }, page]) => {
+      const html = adaptarPlantilla(page.html, demoData(template, rubro, who), page.ejemplo || {});
+      const script = `<script>(${bridge.toString()})(${JSON.stringify(opts)});</script>`;
+      return /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, (m) => m + script) : script + html;
+    }).catch((e) => { built.delete(key); throw e; }));
+  }
+  return built.get(key);
 }
 
 // Messages from the previews, routed to whoever mounted each one.
@@ -130,61 +216,139 @@ window.addEventListener('message', (e) => {
   if (fn && e.data && e.data.mana) fn(e.data);
 });
 const listen = (frame, fn) => { if (frame.contentWindow) listeners.set(frame.contentWindow, fn); };
+const tell = (frame, type, extra) => {
+  if (frame.contentWindow) frame.contentWindow.postMessage(Object.assign({ mana: 1, type }, extra), '*');
+};
 
-// ---------- Thumbnails: the live page, scaled down to the card ----------
-export function mountThumb(shot, template, rubro, who) {
-  const media = shot.querySelector('[data-m="media"]') || shot;
+// Load queue: two previews at a time, hovered ones first, each holding its slot until it has rendered.
+const waiting = [];
+let running = 0;
+function enqueue(run, urgent) {
+  const at = urgent ? waiting.filter((j) => j.urgent).length : waiting.length;
+  waiting.splice(at, 0, { run, urgent });
+  pump();
+}
+function pump() {
+  while (running < 2 && waiting.length) {
+    const { run } = waiting.shift();
+    running += 1;
+    run().finally(() => { running -= 1; pump(); });
+  }
+}
+
+const previews = new Set();
+export function freezeAll() { previews.forEach((p) => p.freeze()); }
+
+// A live, scaled-down preview inside `host` (which sets its size). size(w, h) → the width the site is rendered at.
+// settle: ms it keeps playing after loading before it freezes (0: freeze right away unless active).
+export function createPreview({ template, rubro, who, host, size, settle = 2600 }) {
   const frame = document.createElement('iframe');
-  frame.className = 'pl-frame';
+  frame.className = 'pv-frame';
   frame.setAttribute('sandbox', 'allow-scripts');
   frame.setAttribute('tabindex', '-1');
   frame.setAttribute('aria-hidden', 'true');
   frame.title = `Vista previa de ${template.title}`;
-  media.appendChild(frame);
+  host.appendChild(frame);
 
-  // A landscape card shows the desktop site; a portrait one (phones) shows the mobile site.
   const fit = () => {
-    const w = shot.clientWidth;
-    const h = shot.clientHeight;
+    const w = host.clientWidth;
+    const h = host.clientHeight;
     if (!w || !h) return;
-    const vw = h > w ? 390 : w < 760 ? 1280 : 1440;
+    const vw = size(w, h);
     const s = w / vw;
     frame.style.width = `${vw}px`;
     frame.style.height = `${Math.ceil(h / s)}px`;
     frame.style.transform = `scale(${s})`;
   };
-  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(shot);
+  const ro = 'ResizeObserver' in window ? new ResizeObserver(fit) : null;
+  if (ro) ro.observe(host);
   fit();
 
-  const ready = () => shot.classList.add('is-ready');
-  const load = async () => {
-    try {
-      const html = await buildPage(template, rubro, who, true);
-      listen(frame, (m) => { if (m.type === 'ready') ready(); });
-      frame.addEventListener('load', ready, { once: true });
-      frame.srcdoc = html;
-      setTimeout(ready, 6000);
-    } catch (e) {
-      shot.classList.add('is-failed');
-    }
-  };
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      if (!entries.some((x) => x.isIntersecting)) return;
-      io.disconnect();
-      load();
-    }, { rootMargin: '400px 0px' });
-    io.observe(shot);
-  } else {
-    load();
-  }
+  let state = 'idle';
+  let queued = false;
+  let active = false;
+  let frozen = false;
+  let timer = 0;
 
-  return {
-    tour(on) {
-      if (Mana.reducedMotion || !frame.contentWindow) return;
-      frame.contentWindow.postMessage({ mana: 1, type: 'tour', on }, '*');
+  const p = {
+    template,
+    load(urgent) {
+      if (queued) return;
+      queued = true;
+      enqueue(() => new Promise((resolve) => {
+        if (state === 'destroyed') { resolve(); return; }
+        state = 'loading';
+        buildPage(template, rubro, who, { thumb: true, every: 2, dpr: 1 }).then((html) => {
+          if (state === 'destroyed') { resolve(); return; }
+          const done = () => {
+            if (state !== 'loading') return;
+            state = 'ready';
+            host.classList.add('is-ready');
+            setTimeout(resolve, 400);
+            if (active) p.activate();
+            else timer = setTimeout(() => { if (!active) p.freeze(); }, settle);
+          };
+          listen(frame, (m) => { if (m.type === 'ready') done(); });
+          frame.addEventListener('load', done, { once: true });
+          setTimeout(done, 6000);
+          frame.srcdoc = html;
+        }).catch(() => {
+          state = 'failed';
+          host.classList.add('is-failed');
+          resolve();
+        });
+      }), urgent);
+    },
+    // Hovered: plays and scrolls down by itself.
+    activate() {
+      active = true;
+      clearTimeout(timer);
+      if (state !== 'ready' || Mana.reducedMotion) return;
+      if (frozen) { frozen = false; tell(frame, 'play'); }
+      tell(frame, 'tour', { on: true });
+    },
+    // Plays for a moment (to finish its intro, or just to show it's alive) and freezes again.
+    peek(ms = 2600) {
+      if (active) return;
+      clearTimeout(timer);
+      if (state !== 'ready' || Mana.reducedMotion) return;
+      if (frozen) { frozen = false; tell(frame, 'play'); }
+      timer = setTimeout(() => { if (!active) p.freeze(); }, ms);
+    },
+    deactivate(delay = 900, instant = false) {
+      active = false;
+      if (state !== 'ready') return;
+      tell(frame, 'tour', { on: false, instant });
+      clearTimeout(timer);
+      timer = setTimeout(() => p.freeze(), delay);
+    },
+    freeze() {
+      clearTimeout(timer);
+      if (state !== 'ready' || frozen) return;
+      frozen = true;
+      tell(frame, 'freeze');
+    },
+    // Loads when it gets near the screen.
+    loadWhenNear(el) {
+      if (!('IntersectionObserver' in window)) { p.load(); return; }
+      const io = new IntersectionObserver((entries) => {
+        if (!entries.some((x) => x.isIntersecting)) return;
+        io.disconnect();
+        p.load();
+      }, { rootMargin: '300px 0px' });
+      io.observe(el);
+    },
+    destroy() {
+      state = 'destroyed';
+      clearTimeout(timer);
+      if (ro) ro.disconnect();
+      if (frame.contentWindow) listeners.delete(frame.contentWindow);
+      previews.delete(p);
+      frame.remove();
     },
   };
+  previews.add(p);
+  return p;
 }
 
 // ---------- Viewer: one design at a time, full screen, on desktop or phone size ----------
@@ -239,11 +403,13 @@ export function createViewer({ rubro, who, templates, onClose, onChange, contact
   const frame = $('frame');
   const toast = $('toast');
   const loading = $('loading');
+  const root = document.documentElement;
   let index = 0;
   let open = false;
   let opener = null;
   let toastTimer = 0;
   let token = 0;
+  let shown = Promise.resolve();
 
   const showToast = (m) => {
     const say = CONTACT[m.kind];
@@ -255,6 +421,7 @@ export function createViewer({ rubro, who, templates, onClose, onChange, contact
     toastTimer = setTimeout(() => toast.classList.remove('is-on'), m.text ? 7000 : 4200);
   };
 
+  const ready = () => { el.classList.add('is-ready'); loading.hidden = true; };
   const load = async (i) => {
     const t = templates[i];
     const mine = ++token;
@@ -264,10 +431,11 @@ export function createViewer({ rubro, who, templates, onClose, onChange, contact
     el.classList.remove('is-ready');
     loading.hidden = false;
     try {
-      const html = await buildPage(t, rubro, who, false);
+      // The site starts once the opening animation is over, so the two don't fight for frames.
+      const [html] = await Promise.all([buildPage(t, rubro, who, {}), shown]);
       if (mine !== token) return;
       listen(frame, (m) => {
-        if (m.type === 'ready') { el.classList.add('is-ready'); loading.hidden = true; }
+        if (m.type === 'ready') ready();
         if (m.type === 'contact') showToast(m);
       });
       frame.srcdoc = html;
@@ -276,7 +444,7 @@ export function createViewer({ rubro, who, templates, onClose, onChange, contact
       loading.textContent = 'No pudimos cargar este diseño. Probá de nuevo en un rato.';
     }
   };
-  frame.addEventListener('load', () => { el.classList.add('is-ready'); loading.hidden = true; });
+  frame.addEventListener('load', () => { if (frame.hasAttribute('srcdoc')) ready(); });
 
   const go = (i) => {
     index = (i + templates.length) % templates.length;
@@ -327,13 +495,19 @@ export function createViewer({ rubro, who, templates, onClose, onChange, contact
       const rect = from && from.getBoundingClientRect ? (from.querySelector('.pl-shot') || from).getBoundingClientRect() : null;
       if (!open) {
         open = true;
+        freezeAll();
         el.hidden = false;
-        document.documentElement.classList.add('vw-lock');
+        root.classList.add('vw-lock');
         const start = clipFrom(rect);
+        // Once it covers the screen, the page behind stops being painted.
+        const cover = () => { if (open) root.classList.add('vw-covered'); };
         if (M && M.animate && !Mana.reducedMotion && start) {
-          M.animate(el, { clipPath: [start, 'inset(0px 0px 0px 0px round 0px)'] }, { duration: 0.75, ease })
-            .then(() => { el.style.clipPath = 'none'; });
-          M.animate(el.querySelector('.vw-bar'), { opacity: [0, 1], y: [-12, 0] }, { duration: 0.5, delay: 0.3, ease });
+          const anim = M.animate(el, { clipPath: [start, 'inset(0px 0px 0px 0px round 0px)'] }, { duration: 0.7, ease });
+          shown = Promise.resolve(anim).then(() => { el.style.clipPath = 'none'; cover(); });
+          M.animate(el.querySelector('.vw-bar'), { opacity: [0, 1], y: [-12, 0] }, { duration: 0.5, delay: 0.25, ease });
+        } else {
+          shown = Promise.resolve();
+          cover();
         }
         $('close').focus({ preventScroll: true });
       }
@@ -345,18 +519,20 @@ export function createViewer({ rubro, who, templates, onClose, onChange, contact
       open = false;
       token++;
       toast.classList.remove('is-on');
+      tell(frame, 'freeze');
+      root.classList.remove('vw-covered');
       const target = opener && opener.querySelector ? opener.querySelector('.pl-shot') || opener : null;
       const end = target && target.isConnected ? clipFrom(target.getBoundingClientRect()) : null;
       const finish = () => {
         el.hidden = true;
         el.style.clipPath = '';
         frame.removeAttribute('srcdoc');
-        document.documentElement.classList.remove('vw-lock');
+        root.classList.remove('vw-lock');
         if (opener && opener.focus) opener.focus({ preventScroll: true });
         if (onClose) onClose();
       };
       if (M && M.animate && !Mana.reducedMotion && end) {
-        M.animate(el, { clipPath: ['inset(0px 0px 0px 0px round 0px)', end] }, { duration: 0.55, ease }).then(finish);
+        Promise.resolve(M.animate(el, { clipPath: ['inset(0px 0px 0px 0px round 0px)', end] }, { duration: 0.5, ease })).then(finish);
       } else {
         finish();
       }

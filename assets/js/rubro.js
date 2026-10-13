@@ -4,7 +4,7 @@
 import { loadCatalog, rubroFromUrl, rubroUrl, plural, pad, escapeHtml, lowerFirst } from './catalogo.js';
 import { mockupHtml } from './mockup.js';
 import { rowHtml, revealRows, floater, errorHtml } from './rubros.js';
-import { personalization, mountThumb, createViewer } from './vitrina.js';
+import { personalization, createPreview, createViewer } from './vitrina.js';
 
 const Mana = window.Mana || { reveal: () => {}, refresh: () => {}, reducedMotion: false };
 const page = document.querySelector('[data-rubro-page]');
@@ -94,11 +94,17 @@ function renderGallery(rubro) {
   const templates = rubro.templates;
   grid.innerHTML = templates.map((t, i) => cardHtml(rubro, t, i)).join('');
   const cards = Array.from(grid.querySelectorAll('.pl-card'));
-  const thumbs = cards.map((card, i) => mountThumb(card.querySelector('.pl-shot'), templates[i], rubro, who));
+  // A landscape card shows the desktop site; a portrait one (phones) shows the mobile site.
+  const size = (w, h) => (h > w ? 390 : w < 760 ? 1280 : 1440);
+  const thumbs = cards.map((card, i) => {
+    const p = createPreview({ template: templates[i], rubro, who, host: card.querySelector('.pl-media'), size });
+    p.loadWhenNear(card);
+    return p;
+  });
   cards.forEach((card, i) => {
     Mana.reveal(card.parentElement, i % 3 === 0 ? 0 : (i % 3 - 1) * 0.12);
-    card.addEventListener('mouseenter', () => thumbs[i].tour(true));
-    card.addEventListener('mouseleave', () => thumbs[i].tour(false));
+    card.addEventListener('mouseenter', () => thumbs[i].activate());
+    card.addEventListener('mouseleave', () => thumbs[i].deactivate());
   });
 
   // Opening adds a history entry, so the phone's back button closes the viewer. Closing it from the page just rewrites
