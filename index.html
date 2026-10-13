@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maná — Estudio de desarrollo web</title>
+<meta name="description" content="Maná es un estudio de desarrollo web para empresas. Hacemos sitios desde cero y mejoramos los que ya existen, para que se vean bien y funcionen mejor.">
+<meta name="theme-color" content="#FAFBFC">
+<meta property="og:title" content="Maná — Estudio de desarrollo web">
+<meta property="og:description" content="Webs nuevas. Webs mejores. Sitios, tiendas y plataformas hechos a medida.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script src="/assets/js/gsap.min.js" defer></script>
+<script src="/assets/js/ScrollTrigger.min.js" defer></script>
+<script src="/assets/js/motion.min.js" defer></script>
+<script src="/assets/js/main.js" defer></script>
+</head>
+<body>
+<div id="top" class="mana" data-mana-root="" style="--mana: #56B3F2; position: relative; background: #FAFBFC; color: #0D1117; font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; overflow-x: clip">
+
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(250, 251, 252, 0.84); backdrop-filter: saturate(1.6) blur(16px); -webkit-backdrop-filter: saturate(1.6) blur(16px)">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px">
+<a href="#top" aria-label="Maná, volver al inicio" data-g="nav" class="d" style="display: inline-block; font-size: 30px; font-weight: 600; letter-spacing: -0.055em; line-height: 1">man<span class="acc-a">a<span class="acc" data-g="acc" aria-hidden="true"></span></span></a>
+<nav aria-label="Principal" class="nav-links" data-g="nav" style="font-size: 15px; font-weight: 500">
+<a class="ulink" href="#proyectos">Proyectos</a>
+<a class="ulink" href="#servicios">Servicios</a>
+<a class="ulink" href="#estudio">Estudio</a>
+</nav>
+<a href="#contacto" class="btn" data-g="nav" style="display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 7px 0 20px; border-radius: 999px; background: var(--mana); color: #0D1117; font-size: 15px; font-weight: 500">Hablemos<span class="bi" style="width: 32px; height: 32px; border-radius: 50%; background: #0D1117; color: #FFFFFF; display: grid; place-items: center"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+</div>
+<div class="progress" data-m="progress" style="position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--mana)"></div>
+</header>
+
+<main>
+
+<section class="wrap" style="padding-top: clamp(40px, 7vw, 112px); padding-bottom: clamp(56px, 7vw, 104px)">
+<div data-g="fade" class="mono" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">
+<span>Estudio de desarrollo web</span>
+<span style="display: inline-flex; align-items: center; gap: 10px"><span style="position: relative; display: inline-block; width: 8px; height: 8px"><span data-m="pulse" style="position: absolute; inset: 0; border-radius: 50%; background: var(--mana)"></span><span style="position: absolute; inset: 0; border-radius: 50%; background: var(--mana)"></span></span>Tomando proyectos nuevos</span>
+</div>
+<h1 class="d" style="margin: clamp(28px, 4vw, 56px) 0 0; font-size: clamp(46px, 14.6vw, 192px); line-height: 0.9; letter-spacing: -0.045em; font-weight: 500; color: #0D1117">
+<span style="display: block"><span class="mask"><span data-g="word" style="display: inline-block">Webs</span></span> <span class="mask"><span data-g="word" style="display: inline-block">nuevas.</span></span></span>
+<span style="display: block"><span class="mask"><span data-g="word" style="display: inline-block">Webs</span></span> <span class="mask"><span data-g="word" style="display: inline-block; position: relative; isolation: isolate">mejores.<span data-g="mark" aria-hidden="true" style="position: absolute; z-index: -1; left: -0.02em; right: 0.22em; bottom: 0.08em; height: 0.3em; background: var(--mana)"></span></span></span></span>
+</h1>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 36px 48px; margin-top: clamp(36px, 5vw, 72px)">
+<p data-g="fade" style="margin: 0; max-width: 460px; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.55; color: #3D4550; text-wrap: pretty">Somos Maná, un estudio de desarrollo web para empresas. Hacemos sitios desde cero y mejoramos los que ya existen, para que se vean bien y funcionen mejor.</p>
+<div data-g="fade" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px">
+<a href="#contacto" class="btn" data-m="magnet" style="display: inline-flex; align-items: center; gap: 14px; height: 58px; padding: 0 8px 0 28px; border-radius: 999px; background: var(--mana); color: #0D1117; font-size: 16px; font-weight: 500">Contanos tu proyecto<span class="bi" style="width: 42px; height: 42px; border-radius: 50%; background: #0D1117; color: #FFFFFF; display: grid; place-items: center"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+<a href="#proyectos" class="ulink" style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500">Ver proyectos<svg data-g="cue" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+</div>
+</div>
+</section>
+
+<section aria-label="Qué hacemos, en resumen" style="border-top: 1px solid #E3E7EC; border-bottom: 1px solid #E3E7EC; overflow: hidden; padding: clamp(20px, 2.6vw, 32px) 0">
+<div data-g="marquee" style="display: flex; width: max-content">
+<div style="display: flex; align-items: center; gap: clamp(28px, 3.6vw, 56px); padding-right: clamp(28px, 3.6vw, 56px)">
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Webs desde cero</span>
+<span aria-hidden="true" style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Rediseños</span>
+<span aria-hidden="true" style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Landing pages</span>
+<span aria-hidden="true" style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Ecommerce</span>
+<span aria-hidden="true" style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Plataformas a medida</span>
+<span aria-hidden="true" style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+</div>
+<div aria-hidden="true" style="display: flex; align-items: center; gap: clamp(28px, 3.6vw, 56px); padding-right: clamp(28px, 3.6vw, 56px)">
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Webs desde cero</span>
+<span style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Rediseños</span>
+<span style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Landing pages</span>
+<span style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Ecommerce</span>
+<span style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+<span class="d" style="font-size: clamp(30px, 4.2vw, 60px); letter-spacing: -0.04em; white-space: nowrap">Plataformas a medida</span>
+<span style="flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--mana)"></span>
+</div>
+</div>
+</section>
+
+<section id="proyectos" style="padding-top: clamp(80px, 10vw, 160px); padding-bottom: clamp(96px, 11vw, 176px)">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 48px; margin-bottom: clamp(48px, 6vw, 96px)">
+<div data-m="reveal" style="display: flex; flex-direction: column; gap: 20px">
+<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">(01) Proyectos</p>
+<h2 class="d" style="margin: 0; font-size: clamp(52px, 9vw, 140px); line-height: 0.88; letter-spacing: -0.06em; font-weight: 500">Proyectos<sup class="mono" style="font-size: 0.16em; letter-spacing: 0; font-weight: 400; vertical-align: top; margin-left: 0.2em; position: relative; top: 0.5em">06</sup></h2>
+</div>
+<p data-m="reveal" style="margin: 0; max-width: 380px; font-size: 17px; line-height: 1.6; color: #3D4550; text-wrap: pretty">Sitios, tiendas y plataformas que diseñamos y desarrollamos para empresas. Cada uno, hecho a medida.</p>
+</div>
+
+<div class="work">
+
+
+<div class="c12" data-m="reveal">
+<a class="card" href="#proyectos" data-m="card" aria-label="Legal Partners, ver proyecto" style="display: block; color: #0D1117">
+<div class="ar-wide" style="position: relative; overflow: hidden; border-radius: 20px; background: #EDF0F4; container-type: inline-size">
+<div data-m="media" style="position: absolute; inset: 0">
+<div aria-hidden="true" data-g="parallax" style="position: absolute; left: 0; right: 0; top: -5%; bottom: -5%; display: flex; align-items: flex-end; justify-content: center">
+<div style="width: 76%; height: 80%; display: flex; flex-direction: column; overflow: hidden; background: #FFFFFF; border-radius: 1.2cqw 1.2cqw 0 0; box-shadow: 0 2cqw 6cqw -2cqw rgba(13, 17, 23, 0.16)">
+<div style="flex: none; display: flex; align-items: center; gap: 0.6cqw; height: 2.8cqw; padding: 0 1.4cqw; border-bottom: 1px solid #EEF1F4"><span style="width: 0.7cqw; height: 0.7cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 0.7cqw; height: 0.7cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 0.7cqw; height: 0.7cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 24%; height: 1.2cqw; margin: 0 auto; border-radius: 1cqw; background: #F1F3F6"></span></div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 2.6cqw; padding: 2.2cqw 3.2cqw 0">
+<div style="display: flex; align-items: center; gap: 2.2cqw">
+<span style="width: 1.8cqw; height: 1.8cqw; border-radius: 0.4cqw; background: #0D1117"></span>
+<span style="margin-left: auto; width: 4cqw; height: 0.5cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 4cqw; height: 0.5cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 4cqw; height: 0.5cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 7cqw; height: 2.2cqw; border-radius: 2cqw; background: #0D1117"></span>
+</div>
+<div style="flex: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 3cqw">
+<div style="display: flex; flex-direction: column; justify-content: center; gap: 1.3cqw; padding-bottom: 3cqw">
+<span style="width: 8cqw; height: 0.5cqw; border-radius: 1cqw; background: var(--mana)"></span>
+<span class="d" style="font-size: 5cqw; line-height: 0.9; font-weight: 500; letter-spacing: -0.055em; color: #0D1117">Legal<br>Partners</span>
+<span style="width: 80%; height: 0.7cqw; border-radius: 1cqw; background: #E6EAEF"></span>
+<span style="width: 62%; height: 0.7cqw; border-radius: 1cqw; background: #E6EAEF"></span>
+<div style="display: flex; gap: 1cqw; margin-top: 0.8cqw"><span style="width: 10cqw; height: 2.8cqw; border-radius: 2cqw; background: #0D1117"></span><span style="width: 8cqw; height: 2.8cqw; border-radius: 2cqw; border: 1px solid #D5DBE2"></span></div>
+</div>
+<div style="position: relative; overflow: hidden; border-radius: 1cqw 1cqw 0 0; background: #E9EDF2">
+<span style="position: absolute; bottom: 0; left: 10%; width: 22%; height: 62%; border-radius: 0.6cqw 0.6cqw 0 0; background: #DDE3EA"></span>
+<span style="position: absolute; bottom: 0; left: 38%; width: 26%; height: 86%; border-radius: 0.6cqw 0.6cqw 0 0; background: #D2D9E1"></span>
+<span style="position: absolute; bottom: 0; left: 70%; width: 18%; height: 48%; border-radius: 0.6cqw 0.6cqw 0 0; background: #DDE3EA"></span>
+<span style="position: absolute; top: 14%; right: 12%; width: 5cqw; height: 5cqw; border-radius: 50%; background: var(--mana)"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding-top: 22px">
+<div style="display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<h3 data-m="title" class="d" style="margin: 0; font-size: clamp(26px, 2.5vw, 36px); line-height: 1.05; font-weight: 500; letter-spacing: -0.035em">Legal Partners</h3>
+<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472">01 — Landing · Servicios legales</p>
+</div>
+<span class="arrow" data-m="arrow" aria-hidden="true" style="flex: none; width: 48px; height: 48px; border-radius: 50%; border: 1px solid #D5DBE2; display: grid; place-items: center; color: #0D1117"><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+</div>
+</a>
+</div>
+
+<div class="c7" data-m="reveal">
+<a class="card" href="#proyectos" data-m="card" aria-label="Nova Carlaria, ver proyecto" style="display: block; color: #0D1117">
+<div class="ar-43" style="position: relative; overflow: hidden; border-radius: 20px; background: color-mix(in oklch, var(--mana) 20%, #FFFFFF); container-type: inline-size">
+<div data-m="media" style="position: absolute; inset: 0">
+<div aria-hidden="true" data-g="parallax" style="position: absolute; left: 0; right: 0; top: -5%; bottom: -5%; display: flex; align-items: flex-end; justify-content: flex-end">
+<div style="width: 86%; height: 80%; display: flex; flex-direction: column; overflow: hidden; background: #FFFFFF; border-radius: 1.8cqw 0 0 0; box-shadow: 0 3cqw 8cqw -3cqw rgba(13, 17, 23, 0.2)">
+<div style="flex: none; display: flex; align-items: center; gap: 1cqw; height: 4.4cqw; padding: 0 2.2cqw; border-bottom: 1px solid #EEF1F4"><span style="width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #E3E7EC"></span></div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 2.4cqw; padding: 2.4cqw 3.4cqw 0">
+<div style="display: flex; align-items: center; gap: 2.4cqw">
+<span style="width: 2.6cqw; height: 2.6cqw; border-radius: 50%; background: #2A323C"></span>
+<span style="margin-left: auto; width: 5cqw; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 5cqw; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 5cqw; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+</div>
+<div style="position: relative; flex: none; height: 46%; display: flex; flex-direction: column; justify-content: flex-end; gap: 1.6cqw; padding: 3.4cqw; overflow: hidden; border-radius: 1.4cqw; background: #2A323C">
+<span style="position: absolute; right: -8%; top: -40%; width: 52%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1.4cqw solid rgba(255, 255, 255, 0.07)"></span>
+<span style="position: absolute; right: 8%; top: 18%; width: 14%; height: 70%; background: rgba(255, 255, 255, 0.06)"></span>
+<span style="width: 9cqw; height: 0.8cqw; border-radius: 1cqw; background: var(--mana)"></span>
+<span class="d" style="font-size: 6.6cqw; line-height: 0.88; font-weight: 500; letter-spacing: -0.055em; color: #FFFFFF">Nova<br>Carlaria</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.8cqw">
+<div style="display: flex; flex-direction: column; gap: 1cqw"><span style="height: 9cqw; border-radius: 1cqw; background: #EEF1F4"></span><span style="width: 80%; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span><span style="width: 55%; height: 0.8cqw; border-radius: 1cqw; background: #EEF1F4"></span></div>
+<div style="display: flex; flex-direction: column; gap: 1cqw"><span style="height: 9cqw; border-radius: 1cqw; background: #EEF1F4"></span><span style="width: 80%; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span><span style="width: 55%; height: 0.8cqw; border-radius: 1cqw; background: #EEF1F4"></span></div>
+<div style="display: flex; flex-direction: column; gap: 1cqw"><span style="height: 9cqw; border-radius: 1cqw; background: #EEF1F4"></span><span style="width: 80%; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span><span style="width: 55%; height: 0.8cqw; border-radius: 1cqw; background: #EEF1F4"></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding-top: 22px">
+<div style="display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<h3 data-m="title" class="d" style="margin: 0; font-size: clamp(26px, 2.5vw, 36px); line-height: 1.05; font-weight: 500; letter-spacing: -0.035em">Nova Carlaria</h3>
+<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472">02 — Landing · Construcción</p>
+</div>
+<span class="arrow" data-m="arrow" aria-hidden="true" style="flex: none; width: 48px; height: 48px; border-radius: 50%; border: 1px solid #D5DBE2; display: grid; place-items: center; color: #0D1117"><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+</div>
+</a>
+</div>
+
+<div class="c5 lower" data-m="reveal">
+<a class="card" href="#proyectos" data-m="card" aria-label="Polackio, ver proyecto" style="display: block; color: #0D1117">
+<div class="ar-45" style="position: relative; overflow: hidden; border-radius: 20px; background: #ECEEF1; container-type: inline-size">
+<div data-m="media" style="position: absolute; inset: 0">
+<div aria-hidden="true" data-g="parallax" style="position: absolute; left: 0; right: 0; top: -5%; bottom: -5%">
+<div style="position: absolute; left: 22%; top: 18%; width: 56%; aspect-ratio: 9 / 19; padding: 1.6cqw; border-radius: 9cqw; background: #0D1117; box-shadow: 0 4cqw 10cqw -4cqw rgba(13, 17, 23, 0.35)">
+<div style="height: 100%; display: flex; flex-direction: column; gap: 3cqw; padding: 6cqw 4.6cqw; overflow: hidden; border-radius: 7.4cqw; background: #FFFFFF">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="display: flex; flex-direction: column; gap: 0.8cqw"><span style="width: 4.4cqw; height: 0.6cqw; border-radius: 1cqw; background: #0D1117"></span><span style="width: 3cqw; height: 0.6cqw; border-radius: 1cqw; background: #0D1117"></span></span>
+<span class="d" style="font-size: 3.2cqw; font-weight: 600; letter-spacing: 0.16em; color: #0D1117">POLACKIO</span>
+<span style="width: 3.4cqw; height: 3.4cqw; border-radius: 50%; border: 0.5cqw solid #0D1117"></span>
+</div>
+<div style="position: relative; flex: none; aspect-ratio: 1 / 1; display: grid; place-items: center; border-radius: 3cqw; background: #F2F4F6">
+<span style="width: 40%; aspect-ratio: 3 / 4; border-radius: 42% 42% 14% 14%; background: #D5DBE2"></span>
+<span style="position: absolute; bottom: 13%; width: 32%; height: 2cqw; border-radius: 50%; background: rgba(13, 17, 23, 0.07)"></span>
+<span style="position: absolute; top: 6%; left: 6%; width: 11cqw; height: 3.4cqw; border-radius: 4cqw; background: var(--mana)"></span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between"><span style="width: 44%; height: 1.4cqw; border-radius: 1cqw; background: #0D1117"></span><span style="width: 18%; height: 1.4cqw; border-radius: 1cqw; background: #C9D1DA"></span></div>
+<span style="width: 72%; height: 1cqw; border-radius: 1cqw; background: #E6EAEF"></span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.6cqw"><span style="aspect-ratio: 1 / 1; border-radius: 1.6cqw; background: #F2F4F6; border: 0.5cqw solid #0D1117"></span><span style="aspect-ratio: 1 / 1; border-radius: 1.6cqw; background: #F2F4F6"></span><span style="aspect-ratio: 1 / 1; border-radius: 1.6cqw; background: #F2F4F6"></span><span style="aspect-ratio: 1 / 1; border-radius: 1.6cqw; background: #F2F4F6"></span></div>
+<span style="flex: none; height: 8cqw; display: flex; align-items: center; justify-content: center; border-radius: 4cqw; background: #0D1117"><span style="width: 30%; height: 1.2cqw; border-radius: 1cqw; background: #FFFFFF"></span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding-top: 22px">
+<div style="display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<h3 data-m="title" class="d" style="margin: 0; font-size: clamp(26px, 2.5vw, 36px); line-height: 1.05; font-weight: 500; letter-spacing: -0.035em">Polackio</h3>
+<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472">03 — Landing + Ecommerce · Productos de lujo</p>
+</div>
+<span class="arrow" data-m="arrow" aria-hidden="true" style="flex: none; width: 48px; height: 48px; border-radius: 50%; border: 1px solid #D5DBE2; display: grid; place-items: center; color: #0D1117"><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+</div>
+</a>
+</div>
+
+
+</div>
+</div>
+
+<div class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 48px; margin-top: clamp(112px, 12vw, 200px); margin-bottom: clamp(32px, 3.6vw, 52px)">
+<div data-m="reveal" style="display: flex; flex-direction: column; gap: 18px">
+<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">Archivo · 06 proyectos</p>
+<h3 class="d" style="margin: 0; font-size: clamp(38px, 4.6vw, 68px); line-height: 0.94; letter-spacing: -0.05em; font-weight: 500">Todos los proyectos</h3>
+</div>
+<div data-m="reveal" style="display: flex; align-items: center; gap: 12px">
+<span class="mono reel-hint" style="margin-right: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">Arrastrá para explorar</span>
+<button type="button" class="reel-btn" data-reel-prev aria-label="Proyectos anteriores"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button type="button" class="reel-btn" data-reel-next aria-label="Proyectos siguientes"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+</div>
+
+<div class="reel" data-reel data-m="reveal" role="region" aria-label="Todos los proyectos">
+<div class="reel-track" data-reel-track>
+<a class="card reel-item" href="#proyectos" data-m="card" draggable="false" aria-label="Legal Partners, ver proyecto">
+<div class="reel-media" style="background: #EDF0F4">
+<div data-m="media" style="position: absolute; inset: 0">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: -5%; bottom: -5%; display: flex; align-items: flex-end; justify-content: center">
+<div style="width: 76%; height: 80%; display: flex; flex-direction: column; overflow: hidden; background: #FFFFFF; border-radius: 1.2cqw 1.2cqw 0 0; box-shadow: 0 2cqw 6cqw -2cqw rgba(13, 17, 23, 0.16)">
+<div style="flex: none; display: flex; align-items: center; gap: 0.6cqw; height: 2.8cqw; padding: 0 1.4cqw; border-bottom: 1px solid #EEF1F4"><span style="width: 0.7cqw; height: 0.7cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 0.7cqw; height: 0.7cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 0.7cqw; height: 0.7cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 24%; height: 1.2cqw; margin: 0 auto; border-radius: 1cqw; background: #F1F3F6"></span></div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 2.6cqw; padding: 2.2cqw 3.2cqw 0">
+<div style="display: flex; align-items: center; gap: 2.2cqw">
+<span style="width: 1.8cqw; height: 1.8cqw; border-radius: 0.4cqw; background: #0D1117"></span>
+<span style="margin-left: auto; width: 4cqw; height: 0.5cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 4cqw; height: 0.5cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 4cqw; height: 0.5cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 7cqw; height: 2.2cqw; border-radius: 2cqw; background: #0D1117"></span>
+</div>
+<div style="flex: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 3cqw">
+<div style="display: flex; flex-direction: column; justify-content: center; gap: 1.3cqw; padding-bottom: 3cqw">
+<span style="width: 8cqw; height: 0.5cqw; border-radius: 1cqw; background: var(--mana)"></span>
+<span class="d" style="font-size: 5cqw; line-height: 0.9; font-weight: 500; letter-spacing: -0.055em; color: #0D1117">Legal<br>Partners</span>
+<span style="width: 80%; height: 0.7cqw; border-radius: 1cqw; background: #E6EAEF"></span>
+<span style="width: 62%; height: 0.7cqw; border-radius: 1cqw; background: #E6EAEF"></span>
+<div style="display: flex; gap: 1cqw; margin-top: 0.8cqw"><span style="width: 10cqw; height: 2.8cqw; border-radius: 2cqw; background: #0D1117"></span><span style="width: 8cqw; height: 2.8cqw; border-radius: 2cqw; border: 1px solid #D5DBE2"></span></div>
+</div>
+<div style="position: relative; overflow: hidden; border-radius: 1cqw 1cqw 0 0; background: #E9EDF2">
+<span style="position: absolute; bottom: 0; left: 10%; width: 22%; height: 62%; border-radius: 0.6cqw 0.6cqw 0 0; background: #DDE3EA"></span>
+<span style="position: absolute; bottom: 0; left: 38%; width: 26%; height: 86%; border-radius: 0.6cqw 0.6cqw 0 0; background: #D2D9E1"></span>
+<span style="position: absolute; bottom: 0; left: 70%; width: 18%; height: 48%; border-radius: 0.6cqw 0.6cqw 0 0; background: #DDE3EA"></span>
+<span style="position: absolute; top: 14%; right: 12%; width: 5cqw; height: 5cqw; border-radius: 50%; background: var(--mana)"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-top: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<h4 data-m="title" class="d" style="margin: 0; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.1; font-weight: 500; letter-spacing: -0.03em">Legal Partners</h4>
+<p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472">01 — Landing · Servicios legales</p>
+</div>
+<span class="arrow" data-m="arrow" aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #D5DBE2; display: grid; place-items: center; color: #0D1117"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+</div>
+</a>
+
+<a class="card reel-item" href="#proyectos" data-m="card" draggable="false" aria-label="Nova Carlaria, ver proyecto">
+<div class="reel-media" style="background: color-mix(in oklch, var(--mana) 20%, #FFFFFF)">
+<div data-m="media" style="position: absolute; inset: 0">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: -5%; bottom: -5%; display: flex; align-items: flex-end; justify-content: flex-end">
+<div style="width: 86%; height: 80%; display: flex; flex-direction: column; overflow: hidden; background: #FFFFFF; border-radius: 1.8cqw 0 0 0; box-shadow: 0 3cqw 8cqw -3cqw rgba(13, 17, 23, 0.2)">
+<div style="flex: none; display: flex; align-items: center; gap: 1cqw; height: 4.4cqw; padding: 0 2.2cqw; border-bottom: 1px solid #EEF1F4"><span style="width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #E3E7EC"></span></div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 2.4cqw; padding: 2.4cqw 3.4cqw 0">
+<div style="display: flex; align-items: center; gap: 2.4cqw">
+<span style="width: 2.6cqw; height: 2.6cqw; border-radius: 50%; background: #2A323C"></span>
+<span style="margin-left: auto; width: 5cqw; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 5cqw; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+<span style="width: 5cqw; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span>
+</div>
+<div style="position: relative; flex: none; height: 46%; display: flex; flex-direction: column; justify-content: flex-end; gap: 1.6cqw; padding: 3.4cqw; overflow: hidden; border-radius: 1.4cqw; background: #2A323C">
+<span style="position: absolute; right: -8%; top: -40%; width: 52%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1.4cqw solid rgba(255, 255, 255, 0.07)"></span>
+<span style="position: absolute; right: 8%; top: 18%; width: 14%; height: 70%; background: rgba(255, 255, 255, 0.06)"></span>
+<span style="width: 9cqw; height: 0.8cqw; border-radius: 1cqw; background: var(--mana)"></span>
+<span class="d" style="font-size: 6.6cqw; line-height: 0.88; font-weight: 500; letter-spacing: -0.055em; color: #FFFFFF">Nova<br>Carlaria</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.8cqw">
+<div style="display: flex; flex-direction: column; gap: 1cqw"><span style="height: 9cqw; border-radius: 1cqw; background: #EEF1F4"></span><span style="width: 80%; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span><span style="width: 55%; height: 0.8cqw; border-radius: 1cqw; background: #EEF1F4"></span></div>
+<div style="display: flex; flex-direction: column; gap: 1cqw"><span style="height: 9cqw; border-radius: 1cqw; background: #EEF1F4"></span><span style="width: 80%; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span><span style="width: 55%; height: 0.8cqw; border-radius: 1cqw; background: #EEF1F4"></span></div>
+<div style="display: flex; flex-direction: column; gap: 1cqw"><span style="height: 9cqw; border-radius: 1cqw; background: #EEF1F4"></span><span style="width: 80%; height: 0.8cqw; border-radius: 1cqw; background: #E3E7EC"></span><span style="width: 55%; height: 0.8cqw; border-radius: 1cqw; background: #EEF1F4"></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-top: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<h4 data-m="title" class="d" style="margin: 0; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.1; font-weight: 500; letter-spacing: -0.03em">Nova Carlaria</h4>
+<p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472">02 — Landing · Construcción</p>
+</div>
+<span class="arrow" data-m="arrow" aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #D5DBE2; display: grid; place-items: center; color: #0D1117"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+</div>
+</a>
+
+<a class="card reel-item" href="#proyectos" data-m="card" draggable="false" aria-label="Polackio, ver proyecto" data-tall="">
+<div class="reel-media" style="background: #ECEEF1">
+<div data-m="media" style="position: absolute; inset: 0">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: -5%; bottom: -5%">
+<div style="position: absolute; left: 22%; top: 18%; width: 56%; aspect-ratio: 9 / 19; padding: 1.6cqw; border-radius: 9cqw; background: #0D1117; box-shadow: 0 4cqw 10cqw -4cqw rgba(13, 17, 23, 0.35)">
+<div style="height: 100%; display: flex; flex-direction: column; gap: 3cqw; padding: 6cqw 4.6cqw; overflow: hidden; border-radius: 7.4cqw; background: #FFFFFF">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="display: flex; flex-direction: column; gap: 0.8cqw"><span style="width: 4.4cqw; height: 0.6cqw; border-radius: 1cqw; background: #0D1117"></span><span style="width: 3cqw; height: 0.6cqw; border-radius: 1cqw; background: #0D1117"></span></span>
+<span class="d" style="font-size: 3.2cqw; font-weight: 600; letter-spacing: 0.16em; color: #0D1117">POLACKIO</span>
+<span style="width: 3.4cqw; height: 3.4cqw; border-radius: 50%; border: 0.5cqw solid #0D1117"></span>
+</div>
+<div style="position: relative; flex: none; aspect-ratio: 1 / 1; display: grid; place-items: center; border-radius: 3cqw; background: #F2F4F6">
+<span style="width: 40%; aspect-ratio: 3 / 4; border-radius: 42% 42% 14% 14%; background: #D5DBE2"></span>
+<span style="position: absolute; bottom: 13%; width: 32%; height: 2cqw; border-radius: 50%; background: rgba(13, 17, 23, 0.07)"></span>
+<span style="position: absolute; top: 6%; left: 6%; width: 11cqw; height: 3.4cqw; border-radius: 4cqw; background: var(--mana)"></span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between"><span style="width: 44%; height: 1.4cqw; border-radius: 1cqw; background: #0D1117"></span><span style="width: 18%; height: 1.4cqw; border-radius: 1cqw; background: #C9D1DA"></span></div>
+<span style="width: 72%; height: 1cqw; border-radius: 1cqw; background: #E6EAEF"></span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.6cqw"><span style="aspect-ratio: 1 / 1; border-radius: 1.6cqw; background: #F2F4F6; border: 0.5cqw solid #0D1117"></span><span style="aspect-ratio: 1 / 1; border-radius: 1.6cqw; background: #F2F4F6"></span><span style="aspect-ratio: 1 / 1; border-radius: 1.6cqw; background: #F2F4F6"></span><span style="aspect-ratio: 1 / 1; border-radius: 1.6cqw; background: #F2F4F6"></span></div>
+<span style="flex: none; height: 8cqw; display: flex; align-items: center; justify-content: center; border-radius: 4cqw; background: #0D1117"><span style="width: 30%; height: 1.2cqw; border-radius: 1cqw; background: #FFFFFF"></span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-top: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<h4 data-m="title" class="d" style="margin: 0; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.1; font-weight: 500; letter-spacing: -0.03em">Polackio</h4>
+<p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472">03 — Landing + Ecommerce · Productos de lujo</p>
+</div>
+<span class="arrow" data-m="arrow" aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #D5DBE2; display: grid; place-items: center; color: #0D1117"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+</div>
+</a>
+
+<a class="card reel-item" href="#proyectos" data-m="card" draggable="false" aria-label="Bonded Finance, ver proyecto" data-tall="">
+<div class="reel-media" style="background: color-mix(in oklch, var(--mana) 20%, #FFFFFF)">
+<div data-m="media" style="position: absolute; inset: 0">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: -5%; bottom: -5%">
+<div style="position: absolute; left: 21%; top: 16%; width: 56%; aspect-ratio: 9 / 19; padding: 1.6cqw; border-radius: 9cqw; background: #0D1117; transform: rotate(-6deg); box-shadow: 0 4cqw 10cqw -4cqw rgba(13, 17, 23, 0.35)">
+<div style="height: 100%; display: flex; flex-direction: column; gap: 3cqw; padding: 6cqw 4.6cqw; overflow: hidden; border-radius: 7.4cqw; background: #FFFFFF">
+<div style="display: flex; align-items: center; justify-content: space-between"><span class="d" style="font-size: 3.8cqw; font-weight: 600; letter-spacing: -0.04em; color: #0D1117">Bonded</span><span style="width: 3.6cqw; height: 3.6cqw; border-radius: 50%; background: #F1F3F6"></span></div>
+<div style="display: flex; flex-direction: column; gap: 1.4cqw; margin-top: 1cqw"><span style="width: 92%; height: 3.4cqw; border-radius: 0.8cqw; background: #0D1117"></span><span style="width: 66%; height: 3.4cqw; border-radius: 0.8cqw; background: #0D1117"></span><span style="width: 80%; height: 1cqw; margin-top: 1cqw; border-radius: 1cqw; background: #E6EAEF"></span></div>
+<div style="display: flex; flex-direction: column; gap: 2cqw; padding: 3cqw; border: 1px solid #E6EAEF; border-radius: 3cqw">
+<div style="display: flex; justify-content: space-between"><span style="width: 30%; height: 1cqw; border-radius: 1cqw; background: #C9D1DA"></span><span style="width: 14%; height: 1cqw; border-radius: 1cqw; background: var(--mana)"></span></div>
+<svg viewBox="0 0 100 40" preserveAspectRatio="none" style="display: block; width: 100%; height: 15cqw"><path d="M0 40 L0 32 L12 28 L24 30 L36 22 L48 24 L60 15 L72 18 L84 9 L100 4 L100 40 Z" style="fill: color-mix(in oklch, var(--mana) 22%, #FFFFFF)"></path><path d="M0 32 L12 28 L24 30 L36 22 L48 24 L60 15 L72 18 L84 9 L100 4" fill="none" vector-effect="non-scaling-stroke" style="stroke: var(--mana); stroke-width: 2.2"></path></svg>
+</div>
+<div style="display: flex; align-items: center; gap: 2cqw"><span style="flex: none; width: 5cqw; height: 5cqw; border-radius: 50%; background: #F1F3F6"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 1cqw"><span style="width: 60%; height: 1cqw; border-radius: 1cqw; background: #C9D1DA"></span><span style="width: 40%; height: 1cqw; border-radius: 1cqw; background: #E6EAEF"></span></span></div>
+<div style="display: flex; align-items: center; gap: 2cqw"><span style="flex: none; width: 5cqw; height: 5cqw; border-radius: 50%; background: #F1F3F6"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 1cqw"><span style="width: 52%; height: 1cqw; border-radius: 1cqw; background: #C9D1DA"></span><span style="width: 34%; height: 1cqw; border-radius: 1cqw; background: #E6EAEF"></span></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-top: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<h4 data-m="title" class="d" style="margin: 0; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.1; font-weight: 500; letter-spacing: -0.03em">Bonded Finance</h4>
+<p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472">04 — Landing · Servicios financieros</p>
+</div>
+<span class="arrow" data-m="arrow" aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #D5DBE2; display: grid; place-items: center; color: #0D1117"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+</div>
+</a>
+
+<a class="card reel-item" href="#proyectos" data-m="card" draggable="false" aria-label="FitCore, ver proyecto">
+<div class="reel-media" style="background: #EDF0F4">
+<div data-m="media" style="position: absolute; inset: 0">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: -5%; bottom: -5%; display: flex; align-items: flex-end; justify-content: flex-start">
+<div style="width: 88%; height: 80%; display: flex; flex-direction: column; overflow: hidden; background: #FFFFFF; border-radius: 0 1.8cqw 0 0; box-shadow: 0 3cqw 8cqw -3cqw rgba(13, 17, 23, 0.2)">
+<div style="flex: none; display: flex; align-items: center; gap: 1cqw; height: 4.4cqw; padding: 0 2.2cqw; border-bottom: 1px solid #EEF1F4"><span style="width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #E3E7EC"></span></div>
+<div style="flex: 1; display: grid; grid-template-columns: 24% minmax(0, 1fr)">
+<div style="display: flex; flex-direction: column; gap: 1cqw; padding: 2.6cqw 1.8cqw; background: #F6F7F9; border-right: 1px solid #EEF1F4">
+<div style="display: flex; align-items: center; gap: 1cqw; margin-bottom: 1.6cqw"><span style="width: 2.4cqw; height: 2.4cqw; border-radius: 0.6cqw; background: var(--mana)"></span><span class="d" style="font-size: 2.3cqw; font-weight: 600; letter-spacing: -0.04em; color: #0D1117">FitCore</span></div>
+<span style="display: flex; align-items: center; gap: 1cqw; height: 3.6cqw; padding: 0 1.2cqw; border-radius: 1cqw; background: #FFFFFF; box-shadow: 0 0.2cqw 0.8cqw rgba(13, 17, 23, 0.06)"><span style="width: 1.6cqw; height: 1.6cqw; border-radius: 0.4cqw; background: var(--mana)"></span><span style="width: 56%; height: 0.8cqw; border-radius: 1cqw; background: #0D1117"></span></span>
+<span style="display: flex; align-items: center; gap: 1cqw; height: 3.6cqw; padding: 0 1.2cqw"><span style="width: 1.6cqw; height: 1.6cqw; border-radius: 0.4cqw; background: #D5DBE2"></span><span style="width: 48%; height: 0.8cqw; border-radius: 1cqw; background: #D5DBE2"></span></span>
+<span style="display: flex; align-items: center; gap: 1cqw; height: 3.6cqw; padding: 0 1.2cqw"><span style="width: 1.6cqw; height: 1.6cqw; border-radius: 0.4cqw; background: #D5DBE2"></span><span style="width: 60%; height: 0.8cqw; border-radius: 1cqw; background: #D5DBE2"></span></span>
+<span style="display: flex; align-items: center; gap: 1cqw; height: 3.6cqw; padding: 0 1.2cqw"><span style="width: 1.6cqw; height: 1.6cqw; border-radius: 0.4cqw; background: #D5DBE2"></span><span style="width: 42%; height: 0.8cqw; border-radius: 1cqw; background: #D5DBE2"></span></span>
+<span style="display: flex; align-items: center; gap: 1cqw; height: 3.6cqw; padding: 0 1.2cqw"><span style="width: 1.6cqw; height: 1.6cqw; border-radius: 0.4cqw; background: #D5DBE2"></span><span style="width: 52%; height: 0.8cqw; border-radius: 1cqw; background: #D5DBE2"></span></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2cqw; padding: 2.6cqw 3cqw 0">
+<div style="display: flex; align-items: center; gap: 1.6cqw"><span style="width: 16cqw; height: 1.6cqw; border-radius: 1cqw; background: #0D1117"></span><span style="margin-left: auto; width: 14cqw; height: 3.2cqw; border-radius: 2cqw; background: #F1F3F6"></span><span style="width: 3.2cqw; height: 3.2cqw; border-radius: 50%; background: #D5DBE2"></span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6cqw">
+<span style="display: flex; flex-direction: column; gap: 1cqw; padding: 1.8cqw; border: 1px solid #E9EDF1; border-radius: 1.2cqw"><span style="width: 50%; height: 0.7cqw; border-radius: 1cqw; background: #E3E7EC"></span><span style="width: 64%; height: 2cqw; border-radius: 0.5cqw; background: #0D1117"></span><span style="width: 24%; height: 0.7cqw; border-radius: 1cqw; background: var(--mana)"></span></span>
+<span style="display: flex; flex-direction: column; gap: 1cqw; padding: 1.8cqw; border: 1px solid #E9EDF1; border-radius: 1.2cqw"><span style="width: 44%; height: 0.7cqw; border-radius: 1cqw; background: #E3E7EC"></span><span style="width: 52%; height: 2cqw; border-radius: 0.5cqw; background: #0D1117"></span><span style="width: 30%; height: 0.7cqw; border-radius: 1cqw; background: var(--mana)"></span></span>
+<span style="display: flex; flex-direction: column; gap: 1cqw; padding: 1.8cqw; border: 1px solid #E9EDF1; border-radius: 1.2cqw"><span style="width: 56%; height: 0.7cqw; border-radius: 1cqw; background: #E3E7EC"></span><span style="width: 40%; height: 2cqw; border-radius: 0.5cqw; background: #0D1117"></span><span style="width: 20%; height: 0.7cqw; border-radius: 1cqw; background: #C9D1DA"></span></span>
+</div>
+<div style="height: 15cqw; display: flex; align-items: flex-end; gap: 1cqw; padding: 2cqw; border: 1px solid #E9EDF1; border-radius: 1.2cqw">
+<span style="flex: 1; height: 38%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 52%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 46%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 68%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 58%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 76%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 62%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 84%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 72%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 88%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 80%; border-radius: 0.4cqw; background: #E3E7EC"></span><span style="flex: 1; height: 96%; border-radius: 0.4cqw; background: var(--mana)"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1.2cqw">
+<span style="display: flex; align-items: center; gap: 1.4cqw"><span style="width: 2.8cqw; height: 2.8cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 22%; height: 0.8cqw; border-radius: 1cqw; background: #C9D1DA"></span><span style="margin-left: auto; display: flex; align-items: center; gap: 0.8cqw; height: 2.4cqw; padding: 0 1.2cqw; border-radius: 2cqw; background: color-mix(in oklch, var(--mana) 18%, #FFFFFF)"><span style="width: 0.9cqw; height: 0.9cqw; border-radius: 50%; background: var(--mana)"></span><span style="width: 4cqw; height: 0.6cqw; border-radius: 1cqw; background: #0D1117"></span></span></span>
+<span style="display: flex; align-items: center; gap: 1.4cqw"><span style="width: 2.8cqw; height: 2.8cqw; border-radius: 50%; background: #E3E7EC"></span><span style="width: 28%; height: 0.8cqw; border-radius: 1cqw; background: #C9D1DA"></span><span style="margin-left: auto; display: flex; align-items: center; gap: 0.8cqw; height: 2.4cqw; padding: 0 1.2cqw; border-radius: 2cqw; background: #F1F3F6"><span style="width: 0.9cqw; height: 0.9cqw; border-radius: 50%; background: #C9D1DA"></span><span style="width: 4cqw; height: 0.6cqw; border-radius: 1cqw; background: #C9D1DA"></span></span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span class="mono" style="position: absolute; left: 16px; top: 16px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border-radius: 999px; background: #FFFFFF; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #0D1117"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--mana)"></span>En desarrollo</span>
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-top: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<h4 data-m="title" class="d" style="margin: 0; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.1; font-weight: 500; letter-spacing: -0.03em">FitCore</h4>
+<p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472">05 — Plataforma · Gestión de gimnasios</p>
+</div>
+<span class="arrow" data-m="arrow" aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #D5DBE2; display: grid; place-items: center; color: #0D1117"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+</div>
+</a>
+
+<a class="card reel-item" href="#proyectos" data-m="card" draggable="false" aria-label="Mesa-Autónoma, ver proyecto">
+<div class="reel-media" style="background: color-mix(in oklch, var(--mana) 20%, #FFFFFF)">
+<div data-m="media" style="position: absolute; inset: 0">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: -5%; bottom: -5%">
+<div style="position: absolute; left: 17%; top: 16%; width: 66%; aspect-ratio: 16 / 10.4; padding: 1cqw; border-radius: 2.4cqw; background: #0D1117; box-shadow: 0 3cqw 8cqw -3cqw rgba(13, 17, 23, 0.4)">
+<div style="height: 100%; display: flex; flex-direction: column; overflow: hidden; border-radius: 1.5cqw; background: #FFFFFF">
+<div style="flex: none; display: flex; align-items: center; gap: 1.2cqw; height: 4.4cqw; padding: 0 2cqw; border-bottom: 1px solid #EEF1F4">
+<span class="d" style="font-size: 1.5cqw; font-weight: 600; letter-spacing: -0.03em; color: #0D1117; margin-right: 1.4cqw">Mesa-Autónoma</span>
+<span style="display: flex; align-items: center; justify-content: center; width: 7cqw; height: 2.4cqw; border-radius: 2cqw; background: #0D1117"><span style="width: 50%; height: 0.5cqw; border-radius: 1cqw; background: #FFFFFF"></span></span>
+<span style="width: 7cqw; height: 2.4cqw; border-radius: 2cqw; background: #F1F3F6"></span>
+<span style="width: 7cqw; height: 2.4cqw; border-radius: 2cqw; background: #F1F3F6"></span>
+<span style="margin-left: auto; width: 5cqw; height: 0.7cqw; border-radius: 1cqw; background: #C9D1DA"></span>
+</div>
+<div style="flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 32%">
+<div class="mono" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 1.2cqw; padding: 2cqw; font-size: 1.15cqw; color: #0D1117">
+<span style="padding: 1cqw; border-radius: 1cqw; background: var(--mana)">01</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: #F1F3F6">02</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: var(--mana)">03</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: #FFFFFF; box-shadow: inset 0 0 0 0.25cqw var(--mana)">04</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: #F1F3F6">05</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: #F1F3F6">06</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: var(--mana)">07</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: #F1F3F6">08</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: var(--mana)">09</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: #F1F3F6">10</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: #F1F3F6">11</span>
+<span style="padding: 1cqw; border-radius: 1cqw; background: #F1F3F6">12</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1.3cqw; padding: 2cqw; border-left: 1px solid #EEF1F4">
+<span class="d" style="font-size: 1.9cqw; font-weight: 500; letter-spacing: -0.03em; color: #0D1117">Mesa 04</span>
+<span style="display: flex; justify-content: space-between"><span style="width: 52%; height: 0.7cqw; border-radius: 1cqw; background: #D5DBE2"></span><span style="width: 14%; height: 0.7cqw; border-radius: 1cqw; background: #D5DBE2"></span></span>
+<span style="display: flex; justify-content: space-between"><span style="width: 40%; height: 0.7cqw; border-radius: 1cqw; background: #D5DBE2"></span><span style="width: 12%; height: 0.7cqw; border-radius: 1cqw; background: #D5DBE2"></span></span>
+<span style="display: flex; justify-content: space-between"><span style="width: 58%; height: 0.7cqw; border-radius: 1cqw; background: #D5DBE2"></span><span style="width: 14%; height: 0.7cqw; border-radius: 1cqw; background: #D5DBE2"></span></span>
+<span style="display: flex; justify-content: space-between"><span style="width: 36%; height: 0.7cqw; border-radius: 1cqw; background: #D5DBE2"></span><span style="width: 10%; height: 0.7cqw; border-radius: 1cqw; background: #D5DBE2"></span></span>
+<span style="height: 1px; background: #EEF1F4"></span>
+<span style="display: flex; justify-content: space-between"><span style="width: 28%; height: 1.1cqw; border-radius: 1cqw; background: #0D1117"></span><span style="width: 20%; height: 1.1cqw; border-radius: 1cqw; background: #0D1117"></span></span>
+<span style="margin-top: auto; height: 3.8cqw; display: flex; align-items: center; justify-content: center; border-radius: 2cqw; background: #0D1117"><span style="width: 34%; height: 0.6cqw; border-radius: 1cqw; background: #FFFFFF"></span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span class="mono" style="position: absolute; left: 16px; top: 16px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border-radius: 999px; background: #FFFFFF; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #0D1117"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--mana)"></span>En desarrollo</span>
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-top: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<h4 data-m="title" class="d" style="margin: 0; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.1; font-weight: 500; letter-spacing: -0.03em">Mesa-Autónoma</h4>
+<p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6472">06 — Sistema POS &amp; KDS · Gastronomía</p>
+</div>
+<span class="arrow" data-m="arrow" aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #D5DBE2; display: grid; place-items: center; color: #0D1117"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<section id="servicios" style="border-top: 1px solid #E3E7EC">
+<div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 48px clamp(40px, 6vw, 96px); padding-top: clamp(80px, 9vw, 144px); padding-bottom: clamp(80px, 9vw, 144px)">
+<div data-m="reveal" style="display: flex; flex-direction: column; gap: 24px">
+<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">(02) Servicios</p>
+<h2 class="d" style="margin: 0; font-size: clamp(42px, 5.4vw, 84px); line-height: 0.94; letter-spacing: -0.055em; font-weight: 500; text-wrap: balance">Dos formas de empezar.</h2>
+</div>
+<div data-m="stagger" style="display: flex; flex-direction: column; border-top: 1px solid #E3E7EC">
+<div class="svc" style="display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 8px 16px; padding: 32px 16px; border-bottom: 1px solid #E3E7EC">
+<span class="mono" style="padding-top: 10px; font-size: 13px; color: #5A6472">01</span>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<h3 class="d" style="margin: 0; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.035em">Desde cero</h3>
+<p style="margin: 0; max-width: 520px; font-size: 17px; line-height: 1.6; color: #3D4550; text-wrap: pretty">Diseñamos y desarrollamos tu web completa, a medida de tu empresa y no de una plantilla: estructura, contenido, diseño y código.</p>
+</div>
+</div>
+<div class="svc" style="display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 8px 16px; padding: 32px 16px; border-bottom: 1px solid #E3E7EC">
+<span class="mono" style="padding-top: 10px; font-size: 13px; color: #5A6472">02</span>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<h3 class="d" style="margin: 0; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.035em">Mejorar la que ya tenés</h3>
+<p style="margin: 0; max-width: 520px; font-size: 17px; line-height: 1.6; color: #3D4550; text-wrap: pretty">Tomamos tu sitio actual y lo hacemos más rápido, más claro y más fácil de usar. Sin empezar de nuevo si no hace falta.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="estudio" style="border-top: 1px solid #E3E7EC">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 56px clamp(40px, 6vw, 96px); padding-top: clamp(80px, 9vw, 144px); padding-bottom: clamp(80px, 9vw, 144px)">
+<div data-m="reveal" style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 24px; max-width: 560px">
+<p class="mono" style="margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">(03) Estudio</p>
+<h2 class="d" style="margin: 0; font-size: clamp(42px, 5.4vw, 84px); line-height: 0.94; letter-spacing: -0.055em; font-weight: 500; text-wrap: balance">Un estudio de dos.</h2>
+<p style="margin: 0; max-width: 460px; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; color: #3D4550; text-wrap: pretty">Maná somos Santiago y Damián. Pensamos, diseñamos y programamos cada proyecto nosotros mismos, de principio a fin: hablás directo con quienes hacen tu web.</p>
+</div>
+<div data-m="stagger" style="flex: 1.3 1 520px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: clamp(14px, 2vw, 24px)">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 18px">
+<div class="tilt-wrap">
+<div data-m="tilt" style="position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 20px; background: #EDF0F4; container-type: inline-size">
+<span class="d" aria-hidden="true" style="position: absolute; left: 6%; bottom: -6%; font-size: 82cqw; line-height: 0.8; font-weight: 500; letter-spacing: -0.06em; color: #DFE4EA">S</span>
+<span aria-hidden="true" style="position: absolute; right: 8%; top: 8%; width: 8cqw; height: 8cqw; border-radius: 50%; background: var(--mana)"></span>
+<span class="mono" style="position: absolute; left: 8%; top: 8%; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">[Foto]</span>
+</div>
+</div>
+<figcaption style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px">
+<span class="d" style="font-size: clamp(26px, 2.2vw, 32px); font-weight: 500; letter-spacing: -0.035em">Santiago</span>
+<span class="mono" style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">Cofundador</span>
+</figcaption>
+</figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 18px">
+<div class="tilt-wrap">
+<div data-m="tilt" style="position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 20px; background: #EDF0F4; container-type: inline-size">
+<span class="d" aria-hidden="true" style="position: absolute; left: 6%; bottom: -6%; font-size: 82cqw; line-height: 0.8; font-weight: 500; letter-spacing: -0.06em; color: #DFE4EA">D</span>
+<span aria-hidden="true" style="position: absolute; right: 8%; top: 8%; width: 8cqw; height: 8cqw; border-radius: 50%; background: var(--mana)"></span>
+<span class="mono" style="position: absolute; left: 8%; top: 8%; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">[Foto]</span>
+</div>
+</div>
+<figcaption style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px">
+<span class="d" style="font-size: clamp(26px, 2.2vw, 32px); font-weight: 500; letter-spacing: -0.035em">Damián</span>
+<span class="mono" style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6472">Cofundador</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section id="contacto" style="padding-bottom: clamp(24px, 3vw, 40px)">
+<div class="wrap">
+<div data-m="reveal" style="position: relative; overflow: hidden; display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px); padding: clamp(40px, 7vw, 112px) clamp(24px, 6vw, 96px); border-radius: clamp(24px, 3vw, 40px); background: var(--mana); color: #0D1117">
+<span aria-hidden="true" style="position: absolute; right: -12%; top: -38%; width: 56%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1px solid rgba(13, 17, 23, 0.12)"></span>
+<span aria-hidden="true" style="position: absolute; right: -4%; top: -22%; width: 40%; aspect-ratio: 1 / 1; border-radius: 50%; border: 1px solid rgba(13, 17, 23, 0.1)"></span>
+<p class="mono" style="position: relative; margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #0D1117">(04) Contacto</p>
+<h2 class="d" style="position: relative; margin: 0; font-weight: 500; line-height: 0.9; letter-spacing: -0.06em">
+<span style="display: block; margin-bottom: 0.35em; font-size: clamp(26px, 3.2vw, 48px); letter-spacing: -0.04em">¿Tenés un proyecto en mente?</span>
+<span style="display: block; font-size: clamp(68px, 14.5vw, 224px)">Hablemos.</span>
+</h2>
+<div style="position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px">
+<a href="#contacto" class="btn" data-m="magnet" style="display: inline-flex; align-items: center; gap: 14px; height: 58px; padding: 0 8px 0 28px; border-radius: 999px; background: #0D1117; color: #FFFFFF; font-size: 16px; font-weight: 500">Escribinos<span class="bi" style="width: 42px; height: 42px; border-radius: 50%; background: var(--mana); color: #0D1117; display: grid; place-items: center"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+<div class="mono" style="display: flex; flex-wrap: wrap; gap: 12px 32px; font-size: 14px; color: #0D1117">
+<span>[email de contacto]</span>
+<span>[WhatsApp]</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer style="padding-top: clamp(40px, 5vw, 80px)">
+<div class="wrap">
+<div data-g="foot" aria-hidden="true" class="d" style="display: flex; justify-content: center; font-size: clamp(120px, 36vw, 560px); font-weight: 600; line-height: 0.78; letter-spacing: -0.05em; color: #0D1117">
+<span class="mask"><span data-g="fl" style="display: inline-block">m</span></span>
+<span class="mask"><span data-g="fl" style="display: inline-block">a</span></span>
+<span class="mask"><span data-g="fl" style="display: inline-block">n</span></span>
+<span class="mask"><span data-g="fl" class="acc-a">a<span class="acc" data-g="facc"></span></span></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; margin-top: clamp(20px, 2.4vw, 36px); padding: 28px 0 36px; border-top: 1px solid #E3E7EC; font-size: 14px; color: #5A6472">
+<span>© 2026 Maná — Estudio de desarrollo web</span>
+<span>Santiago &amp; Damián</span>
+<a href="#top" class="ulink" style="display: inline-flex; align-items: center; gap: 8px; color: #0D1117">Volver arriba<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+</div>
+</div>
+</footer>
+
+<div class="cursor" data-m="cursor" aria-hidden="true"><div class="blob" data-m="blob"><span class="mono cursor-label" data-m="cursor-label" style="font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #0D1117">Ver</span></div></div>
+
+</div>
+</body>
+</html>
