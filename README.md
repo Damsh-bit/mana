@@ -9,6 +9,7 @@ Landing del estudio de desarrollo web Maná. Sitio estático (HTML + CSS + JS), 
 - `assets/js/main.js` — animaciones (GSAP + Motion) y carrusel de proyectos
 - `assets/js/hablemos.js` — el formulario de contacto "Hablemos" (abajo)
 - `assets/js/micro.js` — microinteracciones (abajo)
+- `legal/` — aviso legal, privacidad, cookies y botón de arrepentimiento; `assets/js/legal.js` — el aviso de cookies (abajo)
 - `assets/js/catalogo.js`, `rubros.js`, `rubro.js`, `vitrina.js`, `mockup.js` — los rubros (abajo)
 
 ## Rubros: los diseños de Radar, solos
@@ -59,7 +60,10 @@ WhatsApp o teléfono, email y un mensaje). Después, un resumen para revisar y e
   el link para un cliente (`para` y `pais`) completan la empresa y el país, y viajan con la consulta.
 - `data-hablemos="<proyecto>"` en un link abre el formulario con ese tipo de proyecto elegido (los de Servicios lo usan), y
   `/#hablemos` lo abre al cargar.
-- Lo respondido se guarda en el navegador hasta enviarlo: cerrar no pierde nada y al volver sigue donde quedó.
+- Si en el aviso de cookies se aceptaron las "preferencias", lo respondido se guarda en el navegador hasta enviarlo:
+  cerrar no pierde nada y al volver sigue donde quedó. Con "solo lo necesario", no se guarda.
+- Para enviar hay que marcar la casilla de la política de privacidad (no se guarda en el borrador). Viaja
+  `privacidad: { acepta, version }` y Radar rechaza la consulta sin ella; la versión es `PRIVACIDAD` en `hablemos.js`.
 - Contra robots: un campo trampa y un tiempo mínimo; Radar además limita los envíos por conexión.
 
 ## Microinteracciones
@@ -69,6 +73,29 @@ tocarlos, las etiquetas de sección se decodifican al aparecer, las tarjetas de 
 reflejo, los retratos tienen profundidad, "Hablemos." se agranda letra por letra bajo el puntero, el cursor saluda sobre lo
 que abre el formulario, el encabezado se achica al bajar y el logo del pie se sacude. Con "reducir movimiento" no corre
 nada, y lo que sigue al mouse solo corre con mouse.
+
+## Legal (Argentina)
+
+Páginas en `/legal/`, enlazadas desde el pie de todas las páginas junto con la leyenda de la AAIP (Resolución AAIP 14/2018):
+
+| Página | Qué cubre |
+| --- | --- |
+| `/legal/aviso-legal/` | Titular, atención de consultas y reclamos (Disposición 954/2025, art. 6), uso del sitio, propiedad intelectual, consumidores, ley y jurisdicción |
+| `/legal/privacidad/` | Ley 25.326: responsable, datos, finalidad, consentimiento, proveedores, transferencia a Brasil/EE. UU., plazos, derechos |
+| `/legal/cookies/` | Lo que se guarda en el navegador (no hay cookies) y el panel para cambiar la elección |
+| `/legal/arrepentimiento/` | Botón de arrepentimiento y de baja (Disposición 954/2025): arma la solicitud con un código y la manda por email o WhatsApp |
+
+- **Aviso de cookies** (`legal.js`): sale una vez por navegador (y de nuevo al año). "Solo lo necesario" o "Aceptar";
+  lo único opcional es el borrador de Hablemos. "Preferencias de cookies", en el pie, lo vuelve a abrir. Si se suma algo
+  que guarde datos o mida visitas, va en la tabla de `/legal/cookies/`, con su categoría en `OPTIONAL` y subiendo
+  `VERSION` en `legal.js`, y no se activa hasta que lo acepten (`window.ManaConsent.allows('categoria')`).
+- **Datos del titular**: van como `[Nombre y apellido o razón social]`, `[CUIT]`, `[Domicilio legal]`,
+  `[email de contacto]` y `[WhatsApp]` en `legal/*/index.html` y en el resumen de `hablemos.js` (el botón de
+  arrepentimiento toma el email y el WhatsApp de `data-email` y `data-whatsapp` en su formulario). Se reemplazan todos
+  juntos.
+- **Si cambia la política de privacidad**: fecha y versión en la página, y `PRIVACIDAD` en `hablemos.js`.
+- Fuera del sitio: registrar la base "Consultas y clientes de Maná" en el Registro Nacional de Bases de Datos (AAIP) y,
+  si corresponde, poner el QR de Data Fiscal de ARCA (formulario 960/D) en el pie.
 
 ## Local
 

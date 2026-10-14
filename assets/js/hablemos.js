@@ -2,13 +2,15 @@
 // business, goals and features, budget and timing, how to reach them), then a review and the send. Each lead lands in
 // Radar Panel as a "Referido de Maná" (POST /api/referidos, see its README), with the page and design it came from.
 // Opens from every link to #contacto, from [data-hablemos] (its value preselects the project type) and from /#hablemos.
-// Answers stay in this browser until they're sent, so closing it never loses anything.
+// If the visitor said yes to "preferencias" in the cookie notice (legal.js), answers stay in this browser until they're
+// sent, so closing it loses nothing. Sending needs the privacy box ticked: the policy version travels with the lead.
 (function () {
   'use strict';
 
   const RADAR = 'https://radar-panel-sandy.vercel.app';
   const DRAFT_KEY = 'mana:hablemos';
   const DRAFT_MAX_MS = 14 * 24 * 3600 * 1000;
+  const PRIVACIDAD = '2026-10-14'; // the version of /legal/privacidad/ the box accepts: a new version goes here too
   const root = document.querySelector('[data-mana-root]') || document.body;
   const mq = (q) => !!(window.matchMedia && window.matchMedia(q).matches);
   const reduced = mq('(prefers-reduced-motion: reduce)');
@@ -110,19 +112,23 @@
   let sent = false;
   let isOpen = false;
   let busy = false;
+  let acepta = false;  // the privacy box: never kept in the draft, it's ticked again before each send
   let ctx = {};
   let rubroQuery = '';
   let el, panel, stage, side, nextBtn, backBtn, bar, counter, lastFocus = null;
 
   /* ---------- draft ---------- */
+  const mayKeep = () => !!(window.ManaConsent && window.ManaConsent.allows('preferencias'));
   function saveDraft() {
     clearTimeout(saveDraft.t);
+    if (!mayKeep()) return;
     saveDraft.t = setTimeout(() => {
       if (sent) return;
       try { localStorage.setItem(DRAFT_KEY, JSON.stringify({ S, step: Math.min(step, REVIEW), reached, started, t: Date.now() })); } catch (e) { /* private mode */ }
     }, 250);
   }
   function loadDraft() {
+    if (!mayKeep()) return null;
     try {
       const d = JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null');
       if (!d || !d.S || Date.now() - d.t > DRAFT_MAX_MS) return null;
@@ -336,6 +342,7 @@
         <span class="hb-label">¿Algo más? Referencias, ideas, fechas… <span class="hb-opt">opcional</span></span>
         <span class="hb-count mono" data-count>${S.mensaje.length}/2000</span>
       </label>
+      <p class="hb-note" data-a>Usamos estos datos solo para responderte. <a href="/legal/privacidad/" target="_blank" rel="noopener">Cómo los cuidamos</a></p>
       <label class="hb-hp" aria-hidden="true">No completar<input tabindex="-1" autocomplete="off" data-hp></label>`;
   }
 
@@ -353,6 +360,14 @@
         ${card(4, row('Nombre', S.nombre.trim()) + row('Preferís', label(PREFERENCIAS, S.preferencia)) + row('Teléfono', S.telefono.trim() ? `${S.telefono.trim().startsWith('+') ? '' : `${prefix()} `}${S.telefono.trim()}` : '') + row('Email', S.email.trim()) + row('Mensaje', S.mensaje.trim()))}
       </div>
       <p class="hb-fine" data-a>Lo leemos Santiago y Damián, nadie más. Te respondemos en menos de 24 horas hábiles.</p>
+      <label class="hb-consent" data-req="acepta" data-a>
+        <input type="checkbox" data-consent${acepta ? ' checked' : ''}>
+        <span class="hb-box" aria-hidden="true">${ICON.check}</span>
+        <span>Leí la <a href="/legal/privacidad/" target="_blank" rel="noopener">Política de privacidad</a> y acepto que Maná use estos datos para responder mi consulta, incluido guardarlos en servidores de Brasil.</span>
+        ${err('acepta')}
+      </label>
+      <p class="hb-legal" data-a>Responsable: [Nombre y apellido o razón social] (Maná), [Domicilio legal]. Lo marcado como opcional podés dejarlo vacío; el resto lo necesitamos para responderte. Podés pedirnos ver, corregir o borrar tus datos cuando quieras en [email de contacto]. El acceso es gratuito a intervalos no inferiores a seis meses (art. 14, inc. 3, Ley 25.326).</p>
+      <p class="hb-legal" data-a>LA AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
       <div class="hb-send-error" data-send-error role="alert" hidden></div>`;
   }
 
@@ -450,7 +465,7 @@
       nextBtn.querySelector('.bi').innerHTML = step === REVIEW ? ICON.send : ICON.next;
       anim(t, [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 400 });
     }
-    nextBtn.classList.toggle('is-ready', isDone(step) || step === REVIEW);
+    nextBtn.classList.toggle('is-ready', step === REVIEW ? acepta : isDone(step));
     el.querySelector('[data-enter]').textContent = step === REVIEW ? 'para enviar' : 'para seguir';
   }
 
@@ -530,7 +545,7 @@
       box.classList.add('is-error');
       anim(box, [{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' }, { transform: 'translateX(7px)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(0)' }], { duration: 420, easing: 'ease-out' });
       box.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
-      const input = box.querySelector('input.hb-input, [data-rubro-input]');
+      const input = box.querySelector('input.hb-input, [data-rubro-input], [data-consent]');
       if (input) input.focus({ preventScroll: true });
     }
     anim(nextBtn, [{ transform: 'translateX(0)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(0)' }], { duration: 320, easing: 'ease-out' });
@@ -556,6 +571,7 @@
       const e = check(i);
       if (e) { await go(i, { edit: true }); showError(e); return; }
     }
+    if (!acepta) return showError({ field: 'acepta', msg: 'Para enviarla, marcá que aceptás la política de privacidad.' });
     const hp = el.querySelector('[data-hp]');
     const errBox = stage.querySelector('[data-send-error]');
     if (errBox) errBox.hidden = true;
@@ -574,6 +590,7 @@
       pagina: location.pathname,
       plantilla: ctx.plantilla || '',
       para: ctx.para || '',
+      privacidad: { acepta: true, version: PRIVACIDAD },
     };
     const ctrl = window.AbortController ? new AbortController() : null;
     const timer = setTimeout(() => ctrl && ctrl.abort(), 20000);
@@ -790,6 +807,12 @@
       paintChrome();
       saveDraft();
     });
+    el.addEventListener('change', (e) => {
+      if (!e.target.matches('[data-consent]')) return;
+      acepta = e.target.checked;
+      clearError('acepta');
+      paintChrome();
+    });
     // Touching the slider (even without moving it) picks the value under the knob.
     el.addEventListener('pointerdown', (e) => {
       const r = e.target.closest('[data-budget]');
@@ -868,7 +891,7 @@
     if (isOpen) return;
     build();
     ctx = context();
-    if (sent) { sent = false; S = blank(); step = 0; reached = 0; started = 0; }
+    if (sent) { sent = false; S = blank(); step = 0; reached = 0; started = 0; acepta = false; }
     const d = !S.proyecto && !started ? loadDraft() : null;
     if (d) { S = Object.assign(blank(), d.S); step = Math.min(d.step || 0, REVIEW); reached = d.reached || step; started = d.started || 0; }
     if (!S.rubro.clave && !S.rubro.texto && ctx.rubro) S.rubro = { clave: ctx.rubro, texto: '' };
@@ -922,6 +945,7 @@
   function restart() {
     clearDraft();
     S = blank();
+    acepta = false;
     if (ctx.rubro) S.rubro = { clave: ctx.rubro, texto: '' };
     if (ctx.para) S.empresa = ctx.para;
     if (ctx.pais) S.pais = ctx.pais;
@@ -952,6 +976,12 @@
     if (!a) return;
     e.preventDefault();
     open(a, a.dataset.hablemos || '');
+  });
+
+  // Saying no to "preferencias" drops the draft; saying yes with the form open keeps it from now on.
+  document.addEventListener('mana:consent', (e) => {
+    if (!e.detail.preferencias) clearDraft();
+    else if (isOpen && !sent) saveDraft();
   });
 
   window.Hablemos = { open: (preset) => open(null, preset) };
