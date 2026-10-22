@@ -7,6 +7,7 @@ Landing del estudio de desarrollo web Maná. Sitio estático (HTML + CSS + JS), 
 - `rubros/rubro.html` — un rubro (`/rubros/<rubro>`, por la regla de `vercel.json`)
 - `assets/css/styles.css` — estilos
 - `assets/js/main.js` — animaciones (GSAP + Motion) y carrusel de proyectos
+- `assets/img/proyectos/` — imágenes reales de los proyectos (por ahora, la figura y el logo de Polackio)
 - `assets/js/hablemos.js` — el formulario de contacto "Hablemos" (abajo)
 - `assets/js/micro.js` — microinteracciones (abajo)
 - `legal/` — aviso legal, privacidad, cookies y botón de arrepentimiento; `assets/js/legal.js` — el aviso de cookies (abajo)
