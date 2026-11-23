@@ -1,8 +1,24 @@
 {
   "rewrites": [
-    { "source": "/rubros/:rubro", "destination": "/rubros/rubro.html" },
-    { "source": "/nanarquitectura", "destination": "https://nan-arquitectos.vercel.app/nanarquitectura/" },
-    { "source": "/nanarquitectura/:path*/", "destination": "https://nan-arquitectos.vercel.app/nanarquitectura/:path*/" },
-    { "source": "/nanarquitectura/:path*", "destination": "https://nan-arquitectos.vercel.app/nanarquitectura/:path*" }
+    {
+      "source": "/rubros/:rubro",
+      "destination": "/rubros/rubro.html"
+    },
+    {
+      "source": "/nanarquitectura",
+      "destination": "https://nan-arquitectos.vercel.app/nanarquitectura/index.html"
+    },
+    {
+      "source": "/nanarquitectura/",
+      "destination": "https://nan-arquitectos.vercel.app/nanarquitectura/index.html"
+    },
+    {
+      "source": "/nanarquitectura/:path*/",
+      "destination": "https://nan-arquitectos.vercel.app/nanarquitectura/:path*/"
+    },
+    {
+      "source": "/nanarquitectura/:path*",
+      "destination": "https://nan-arquitectos.vercel.app/nanarquitectura/:path*"
+    }
   ]
 }
