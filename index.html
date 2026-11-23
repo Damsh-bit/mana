@@ -112,8 +112,8 @@
 <picture class="rb-slide"><source media="(max-width: 899px)" srcset="/assets/img/proyectos/ribbly-m2.webp" width="475" height="1213"><img src="/assets/img/proyectos/ribbly-2.webp" alt="" width="1686" height="978" loading="lazy" decoding="async"></picture>
 <picture class="rb-slide"><source media="(max-width: 899px)" srcset="/assets/img/proyectos/ribbly-m3.webp" width="478" height="1197"><img src="/assets/img/proyectos/ribbly-3.webp" alt="" width="1686" height="978" loading="lazy" decoding="async"></picture>
 </div>
-<video class="rb-video" aria-hidden="true" muted loop playsinline preload="none" poster="/assets/img/proyectos/ribbly-1.webp" data-src="/assets/video/Ribbly-portada.webm"></video>
-<script>(function(){var v=document.currentScript.previousElementSibling;if(matchMedia('(min-width:900px)').matches){v.src=v.dataset.src;v.autoplay=true;v.play&&v.play().catch(function(){});}})();</script>
+<video class="rb-video" aria-hidden="true" muted loop playsinline preload="none" poster="/assets/img/proyectos/ribbly-1.webp" data-src="/assets/video/Ribbly-portada.webm" data-src-m="/assets/video/Ribbly-portada-movil.webm"></video>
+<script>(function(){var v=document.currentScript.previousElementSibling,d=matchMedia('(min-width:900px)').matches;if(!d)v.poster='/assets/img/proyectos/ribbly-m1.webp';v.src=d?v.dataset.src:v.dataset.srcM;v.autoplay=true;v.play&&v.play().catch(function(){});})();</script>
 </div>
 </div>
 <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding-top: 22px">
