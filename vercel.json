@@ -1,3 +1,7 @@
 {
-  "rewrites": [{ "source": "/rubros/:rubro", "destination": "/rubros/rubro.html" }]
+  "rewrites": [
+    { "source": "/rubros/:rubro", "destination": "/rubros/rubro.html" },
+    { "source": "/nanarquitectura", "destination": "https://nan-arquitectos.vercel.app/nanarquitectura/" },
+    { "source": "/nanarquitectura/:path*", "destination": "https://nan-arquitectos.vercel.app/nanarquitectura/:path*" }
+  ]
 }
